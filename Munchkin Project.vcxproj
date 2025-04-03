@@ -127,7 +127,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="characterClass.cpp" />
+    <ClCompile Include="GamePlayer.cpp" />
     <ClCompile Include="Munchkin Project.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="characterClass.h" />
+    <ClInclude Include="GamePlayer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
