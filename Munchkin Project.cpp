@@ -3,14 +3,36 @@
 // test change
 
 #include <iostream>
+#include <vector>
+#include "GamePlayer.h"
 
 int main()
 {
+    // Create Active Game Instance (struct?)
+    vector<GamePlayer> activePlayers;
+
+    GamePlayer player1;
+    GamePlayer player2;
+    GamePlayer player3;
+
+    activePlayers.push_back(player1);
+    activePlayers.push_back(player2);
+    activePlayers.push_back(player3);
+    
     std::cout << "Welcome to Munchkin!\n";
-    Menu();
+
+
+    do {
+
+    } while (false);
 }
 
-static int Menu() {}
+static int Menu() {
+
+}
+
+// to do list
+
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
 // Debug program: F5 or Debug > Start Debugging menu
