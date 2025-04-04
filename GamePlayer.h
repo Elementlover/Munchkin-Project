@@ -11,6 +11,17 @@ private:
 	characterClass activeClass;
 
 public:
-	GamePlayer() : playerLevel(0) {}
+	GamePlayer(int level = 1, int power = 1, characterClass cls = characterClass())
+		: playerLevel(level), playerPower(power), activeClass(cls) {}
+
+    // Getters
+    int getPlayerLevel() const { return playerLevel; }
+    int getPlayerPower() const { return playerPower; }
+    characterClass getActiveClass() const { return activeClass; }
+
+    // Setters
+    void setPlayerLevel(int level) { playerLevel = level; }
+    void setPlayerPower(int power) { playerPower = power; }
+    void setActiveClass(characterClass cls) { activeClass = cls; }
 };
 
