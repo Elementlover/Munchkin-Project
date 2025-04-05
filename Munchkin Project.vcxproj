@@ -132,6 +132,7 @@
     <ClCompile Include="Munchkin Project.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Card.h" />
     <ClInclude Include="characterClass.h" />
     <ClInclude Include="GamePlayer.h" />
   </ItemGroup>
