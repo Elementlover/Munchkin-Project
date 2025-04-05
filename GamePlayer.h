@@ -26,5 +26,7 @@ public:
     void setPlayerPower(int power) { playerPower = power; }
     void setPlayerName(string name) { playerName = name; }
     void setActiveClass(characterClass cls) { activeClass = cls; }
+
+	void addOneLevel() { playerLevel++; }
 };
 

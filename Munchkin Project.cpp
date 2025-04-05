@@ -28,7 +28,7 @@ int main()
 
 
     do {
-        player1->setPlayerLevel(player1->getPlayerLevel() + 1);
+        player1->addOneLevel();
     } while (!checkWinCondition(activePlayers));
 
     // End Game
