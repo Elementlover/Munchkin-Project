@@ -4,16 +4,21 @@
 
 #include <iostream>
 #include <vector>
+#include <algorithm>
 #include "GamePlayer.h"
+
+using namespace std;
+
+static bool checkWinCondition(vector<GamePlayer*> playerVector);
 
 int main()
 {
     // Create Active Game Instance (struct?)
-    vector<GamePlayer> activePlayers;
+    vector<GamePlayer*> activePlayers;
 
-    GamePlayer player1;
-    GamePlayer player2;
-    GamePlayer player3;
+    GamePlayer* player1 = new GamePlayer("Alice");
+    GamePlayer* player2 = new GamePlayer("Ben");
+    GamePlayer* player3 = new GamePlayer("Cathy");
 
     activePlayers.push_back(player1);
     activePlayers.push_back(player2);
@@ -23,12 +28,37 @@ int main()
 
 
     do {
+        player1->setPlayerLevel(player1->getPlayerLevel() + 1);
+    } while (!checkWinCondition(activePlayers));
 
-    } while (false);
+    // End Game
+
+    // Display Results
+
+    sort(activePlayers.begin(), activePlayers.end(), [](const GamePlayer* a, const GamePlayer* b) {
+        return a->getPlayerLevel() > b->getPlayerLevel();
+        });
+    
+    cout << "The Winner of the game is " << activePlayers[0]->getPlayerName() << "!" << endl;
+
+    for (GamePlayer* player : activePlayers) {
+        cout << player->getPlayerName() << ": Level " << player->getPlayerLevel() << endl;
+    }
+
+
 }
 
 static int Menu() {
 
+}
+
+
+bool checkWinCondition(vector<GamePlayer*> playerVector)
+{
+    for (GamePlayer* player : playerVector) {
+        if (player->getPlayerLevel() >= 10) return true;
+    }
+    return false;
 }
 
 // to do list

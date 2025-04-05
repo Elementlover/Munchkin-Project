@@ -11,10 +11,10 @@ private:
 public:
 	characterClass(string className = "Unknown") : name(className) {}
 
-    // Getter
+    // Getters
     string getName() const { return name; }
 
-    // Setter
+    // Setters
     void setName(string className) { name = className; }
 };
 
