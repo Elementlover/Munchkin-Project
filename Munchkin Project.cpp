@@ -48,11 +48,6 @@ int main()
 
 }
 
-static int Menu() {
-
-}
-
-
 bool checkWinCondition(vector<GamePlayer*> playerVector)
 {
     for (GamePlayer* player : playerVector) {
