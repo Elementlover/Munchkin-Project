@@ -40,8 +40,12 @@ public:
 			cout << "Deck loaded successfully with " << deck.size() << " cards.\n";
 
             auto card = deck[0];
+			auto card2 = deck[1];
+
 			cout << "First card in deck: " << card->getName() << endl;
 			card->playCard(*activePlayers[0], *this); // Play a card test
+            
+			card2->playCard(*activePlayers[1], *this); // Play a card test 2
 
 		}
 		else {

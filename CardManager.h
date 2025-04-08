@@ -31,6 +31,14 @@ public:
 			return make_shared<EquipmentItemCard>(name, description, powerBonus, twoHanded);
         }
 
+		if (find(tags.begin(), tags.end(), "curse") != tags.end()) {
+			cout << "Creating Curse Card: " << name << endl; //debug line
+			int levelChange = data["effects"]["levelChange"];
+			int powerChange = data["effects"].value("powerChange", 0);
+
+			return make_shared<CurseCard>(name, description, levelChange, powerChange);
+		}
+
         // Add more conditionals for other card types like CurseCard, etc.
 
         return nullptr;

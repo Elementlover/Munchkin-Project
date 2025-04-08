@@ -17,5 +17,14 @@
         "effects": {
             "levelChange": -1
         }
+    },
+    {
+        "name": "Shield of Destiny",
+        "description": "A legendary shield that grants +2 power.",
+        "type": "Treasure",
+        "tags": [ "equipment", "weapon" ],
+        "effects": {
+            "powerBonus": 2
+        }
     }
 ]

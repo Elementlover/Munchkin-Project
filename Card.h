@@ -67,11 +67,20 @@ public:
 
 class CurseCard : public Card
 {
+private:
+	int powerChange;
+	int levelChange;
+	
 public:
-	CurseCard(string cardName, string cardDescription)
-		: Card(cardName, cardDescription) {
+	CurseCard(string cardName, string cardDescription, int levelChange = 0, int powerChange = 0)
+		: Card(cardName, cardDescription), levelChange(levelChange), powerChange(powerChange)  {
 	}
 	void playCard(GamePlayer& player, GameInstance& game) override {
 		// Implement curse-specific logic
+		int currentLevel = player.getPlayerLevel();
+		int currentPower = player.getPlayerPower();
+		player.setPlayerLevel(currentLevel + levelChange);
+		player.setPlayerPower(currentPower + powerChange);
+		cout << player.getPlayerName() << " is cursed! You lost " << levelChange << " levels and " << powerChange << " power.\n";
 	}
 };
