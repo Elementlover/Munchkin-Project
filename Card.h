@@ -2,6 +2,7 @@
 #include <string>
 #include "GamePlayer.h"
 #include "GameInstance.h"
+#include <json.hpp>
 
 using namespace std;
 

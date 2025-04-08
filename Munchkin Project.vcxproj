@@ -136,6 +136,7 @@
   <ItemGroup>
     <ClInclude Include="Card.h" />
     <ClInclude Include="characterClass.h" />
+    <ClInclude Include="EquipmentItemCard.h" />
     <ClInclude Include="GameInstance.h" />
     <ClInclude Include="GamePlayer.h" />
   </ItemGroup>
