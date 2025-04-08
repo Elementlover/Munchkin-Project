@@ -7,18 +7,22 @@
 #include <algorithm>
 #include "GamePlayer.h"
 #include "GameInstance.h"
+#include <json.hpp>
 
 using namespace std;
+using json = nlohmann::json;
 
-static bool checkWinCondition(vector<GamePlayer*> playerVector);
 
 int main()
 {
+	json j = R"({"name": "John", "age": 30})"_json;
+	std::cout << j["name"] << std::endl;
     // Create Active Game Instance (struct?)
 	GameInstance gameInstance;
 	// Run the game
 	gameInstance.run();
 	// Cleanup
+	
 	// No need to delete players here, GameInstance destructor handles it
 	return 0;
 

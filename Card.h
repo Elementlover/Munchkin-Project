@@ -25,7 +25,10 @@ public:
 
 	// Getters
 	string getName() const { return name; }
+	string getType() const { return type; }
 	string getDescription() const { return description; }
+	vector<string> getTags() const { return tags; }
+
 	// Setters
 	void setName(string cardName) { name = cardName; }
 	void setDescription(string cardDescription) { description = cardDescription; }
