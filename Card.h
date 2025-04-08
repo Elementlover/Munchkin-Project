@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include "GamePlayer.h"
+#include "GameInstance.h"
 
 using namespace std;
 
@@ -29,7 +30,7 @@ public:
 	void setDescription(string cardDescription) { description = cardDescription; }
 
 	// Card Actions
-	virtual void playCard(GamePlayer& player) = 0;
+	virtual void playCard(GamePlayer& player, GameInstance& game) = 0;
 };
 // Card Types
 // Derived classes for specific card types
@@ -40,7 +41,7 @@ public:
 	ItemCard(string cardName, string cardDescription)
 		: Card(cardName, cardDescription) {
 	}
-	void playCard(GamePlayer& player) override {
+	void playCard(GamePlayer& player, GameInstance& game) override {
 		// Implement item-specific logic
 	}
 };
@@ -51,7 +52,7 @@ public:
 	MonsterCard(string cardName, string cardDescription)
 		: Card(cardName, cardDescription) {
 	}
-	void playCard(GamePlayer& player) override {
+	void playCard(GamePlayer& player, GameInstance& game) override {
 		// Implement monster-specific logic
 	}
 };
@@ -62,7 +63,7 @@ public:
 	CurseCard(string cardName, string cardDescription)
 		: Card(cardName, cardDescription) {
 	}
-	void playCard(GamePlayer& player) override {
+	void playCard(GamePlayer& player, GameInstance& game) override {
 		// Implement curse-specific logic
 	}
 };
