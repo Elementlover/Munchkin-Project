@@ -15,6 +15,7 @@ public:
         vector<string> tags = data["tags"];
 
         if (data["tags"].contains("equipment")) {
+			cout << "Creating Equipment Card: " << name << endl; //debug line
 			int powerBonus = data["effects"]["powerBonus"];
 			bool twoHanded = data["effects"]["twoHanded"]; // TODO check what the default value is
 			return make_shared<EquipmentItemCard>(name, description, powerBonus, twoHanded);

@@ -13,8 +13,9 @@ private:
 public:
 
     vector<shared_ptr<Card>> loadCards(const string& filePath) {
+		cout << "Loading cards from " << filePath << endl; //debug line
         ifstream file(filePath);
-        nlohmann::json data;
+        json data;
         file >> data;
 
         vector<shared_ptr<Card>> cards;

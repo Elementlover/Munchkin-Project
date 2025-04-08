@@ -4,6 +4,8 @@
 #include "GameInstance.h"
 #include <json.hpp>
 
+class GameInstance;
+
 using namespace std;
 using json = nlohmann::json;
 
@@ -16,7 +18,7 @@ private:
 	vector<string> tags; // Tags for card categorization
 
 public:
-	Card(string cardName = "Unknown", string cardDescription = "No description", string cardType = "No Type", vector<string> cardTags)
+	Card(string cardName = "Unknown", string cardDescription = "No description", string cardType = "No Type", vector<string> cardTags = {})
 		: name(cardName), description(cardDescription), type(cardType), tags(cardTags) {
 	}
 

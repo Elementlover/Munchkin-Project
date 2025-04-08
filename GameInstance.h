@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <iostream>
 #include "GamePlayer.h"
+#include "DeckManager.h"
 
 using namespace std;
 
@@ -11,6 +12,8 @@ class GameInstance
 private:
     vector<GamePlayer*> activePlayers;
 	int currentPlayerIndex = 0;
+	vector<shared_ptr<Card >> deck;
+
 
 public:
     GameInstance() {
@@ -27,7 +30,24 @@ public:
     }
 
     void run() {
+
+        DeckManager deckManager;
+		auto deck = deckManager.loadCards("cards.json");
+
         cout << "Welcome to Munchkin!\n";
+
+		if (!deck.empty()) { // TODO abstract this check to DeckManager
+			cout << "Deck loaded successfully with " << deck.size() << " cards.\n";
+
+            auto card = deck[0];
+			cout << "First card in deck: " << card->getName() << endl;
+			card->playCard(*activePlayers[0], *this); // Play a card test
+
+		}
+		else {
+			cout << "Failed to load deck.\n";
+			return;
+		}
 
         do {
             // Game logic (just leveling player 1 for demo)
