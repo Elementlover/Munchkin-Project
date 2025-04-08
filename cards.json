@@ -5,7 +5,8 @@
         "type": "Treasure",
         "tags": [ "equipment", "weapon" ],
         "effects": {
-            "powerBonus": 3
+            "powerBonus": 3,
+            "twoHanded": false
         }
     },
     {
