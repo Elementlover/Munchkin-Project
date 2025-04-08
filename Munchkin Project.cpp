@@ -15,8 +15,8 @@ using json = nlohmann::json;
 
 int main()
 {
-	json j = R"({"name": "John", "age": 30})"_json;
-	std::cout << j["name"] << std::endl;
+	/*json j = R"({"name": "John", "age": 30})"_json;
+	std::cout << j["name"] << std::endl;*/ // test json
     // Create Active Game Instance (struct?)
 	GameInstance gameInstance;
 	// Run the game
