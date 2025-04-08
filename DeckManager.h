@@ -17,16 +17,16 @@ public:
     vector<shared_ptr<Card>> loadCards(const string& filePath) {
 		cout << "Loading cards from " << filePath << endl; //debug line
         ifstream file(filePath);
+
         if (!file.is_open()) { //debug
             cout << "Error: Could not open file at " << filePath << endl;
             return {};
         }
         else {
-			cout << "File opened successfully." << endl; //debug line
+			cout << "File opened successfully." << endl;
         }
 
         json data;
-		cout << "Raw JSON Loaded: " << data.dump(4) << endl; //debug line
 
         try {
             file >> data;
