@@ -10,6 +10,7 @@ class GameInstance
 {
 private:
     vector<GamePlayer*> activePlayers;
+	int currentPlayerIndex = 0;
 
 public:
     GameInstance() {
@@ -36,7 +37,6 @@ public:
         displayResults();
     }
 
-private:
     bool checkWinCondition() {
         for (auto player : activePlayers) {
             if (player->getPlayerLevel() >= 10) {
@@ -45,6 +45,12 @@ private:
         }
         return false;
     }
+
+	GamePlayer& GetCurrentPlayer() {
+		return *activePlayers[currentPlayerIndex];
+	}
+
+private:
 
     void displayResults() {
         sort(activePlayers.begin(), activePlayers.end(),

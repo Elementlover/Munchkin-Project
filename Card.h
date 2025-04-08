@@ -11,10 +11,11 @@ private:
 	string name;
 	string type; // "Door" or "Treasure"
 	string description;
+	vector<string> tags; // Tags for card categorization
 
 public:
-	Card(string cardName = "Unknown", string cardDescription = "No description", string cardType = "No Type")
-		: name(cardName), description(cardDescription), type(cardType) {
+	Card(string cardName = "Unknown", string cardDescription = "No description", string cardType = "No Type", vector<string> cardTags)
+		: name(cardName), description(cardDescription), type(cardType), tags(cardTags) {
 	}
 
 	// Destructor for cleanup of derived classes
