@@ -44,5 +44,14 @@
     <ClInclude Include="EquipmentItemCard.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="CardManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DeckManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cards.json" />
   </ItemGroup>
 </Project>

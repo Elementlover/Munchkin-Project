@@ -135,10 +135,15 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Card.h" />
+    <ClInclude Include="CardManager.h" />
     <ClInclude Include="characterClass.h" />
+    <ClInclude Include="DeckManager.h" />
     <ClInclude Include="EquipmentItemCard.h" />
     <ClInclude Include="GameInstance.h" />
     <ClInclude Include="GamePlayer.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cards.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

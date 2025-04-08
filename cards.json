@@ -1,0 +1,20 @@
+[
+    {
+        "name": "Sword of Destiny",
+        "description": "A legendary sword that grants +3 power.",
+        "type": "Treasure",
+        "tags": [ "equipment", "weapon" ],
+        "effects": {
+            "powerBonus": 3
+        }
+    },
+    {
+        "name": "Curse: Lose a Level",
+        "description": "You lose one level immediately.",
+        "type": "Door",
+        "tags": [ "curse" ],
+        "effects": {
+            "levelChange": -1
+        }
+    }
+]
