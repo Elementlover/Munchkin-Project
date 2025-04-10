@@ -43,6 +43,7 @@ public:
             auto card = deck[0];
 			auto card2 = deck[1];
 
+
 			cout << "First card in deck: " << card->getName() << endl;
 			card->playCard(*activePlayers[0], *this); // Play a card test
             
@@ -56,9 +57,8 @@ public:
 
         do {
             // Game logic (just leveling player 1 for demo)
-            //activePlayers[currentPlayerIndex] (current player)
-            activePlayers[0]->addOneLevel();
-            currentPlayerIndex++;
+            runTurn();
+            currentPlayerIndex = (currentPlayerIndex + 1) % activePlayers.size();
         } while (!checkWinCondition());
 
         displayResults();
@@ -91,4 +91,24 @@ private:
             cout << player->getPlayerName() << ": Level " << player->getPlayerLevel() << endl;
         }
     }
+
+
+    // Runs the turn of the current player, drawing a card from the deck
+    void runTurn() {
+        GamePlayer& player = *activePlayers[currentPlayerIndex];
+        cout << "\n--- " << player.getPlayerName() << "'s turn ---\n";
+
+        // Draw card
+        if (!deck.empty()) {
+            auto card = deck.back();
+            deck.pop_back();
+            cout << player.getPlayerName() << " draws a card: " << card->getName() << endl;
+            card->playCard(player, *this);
+        }
+        else {
+            cout << "No cards left to draw!\n";
+        }
+
+        player.addOneLevel();
+ }
 };

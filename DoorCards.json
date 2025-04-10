@@ -1,0 +1,29 @@
+[
+    {
+        "name": "Hill Giant",
+        "description": "A Legendary giant with a strength... of 1",
+        "type": "Door",
+        "tags": [ "monster" ],
+        "effects": {
+            "powerBonus": 3
+        }
+    },
+    {
+        "name": "Curse: Lose a Level",
+        "description": "You lose one level immediately.",
+        "type": "Door",
+        "tags": [ "curse" ],
+        "effects": {
+            "levelChange": -1
+        }
+    },
+    {
+        "name": "Shield of Destiny",
+        "description": "A legendary shield that grants +2 power.",
+        "type": "Treasure",
+        "tags": [ "equipment", "weapon" ],
+        "effects": {
+            "powerBonus": 2
+        }
+    }
+]
