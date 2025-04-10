@@ -12,7 +12,8 @@ class GameInstance
 private:
     vector<GamePlayer*> activePlayers;
 	int currentPlayerIndex = 0;
-	vector<shared_ptr<Card >> deck;
+	vector<shared_ptr<Card>> deck; // should be removed later
+    vector<shared_ptr<Card>> DoorDeck;
 
 
 public:
@@ -55,7 +56,9 @@ public:
 
         do {
             // Game logic (just leveling player 1 for demo)
+            //activePlayers[currentPlayerIndex] (current player)
             activePlayers[0]->addOneLevel();
+            currentPlayerIndex++;
         } while (!checkWinCondition());
 
         displayResults();

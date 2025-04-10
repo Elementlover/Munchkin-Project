@@ -10,6 +10,7 @@ private:
 	int playerPower;
 	characterClass activeClass;
     string playerName;
+    vector<Card> heldCards;
 
 public:
 	GamePlayer(string name = "Default Name", int level = 1, int power = 1, characterClass cls = characterClass())
@@ -28,5 +29,7 @@ public:
     void setActiveClass(characterClass cls) { activeClass = cls; }
 
 	void addOneLevel() { playerLevel++; }
+
+
 };
 
