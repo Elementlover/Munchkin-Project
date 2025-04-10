@@ -1,54 +1,43 @@
 #pragma once
-#include "characterClass.h"
-//#include "Card.h" // Full definition needed for shared_ptr<Card>
-#include "characterClass.h"
 
-class Card;
+#include "characterClass.h"
+#include <string>
+#include <vector>
+#include <memory>
 
-using namespace std;
+class Card; // Forward declaration
 
 class GamePlayer
 {
 private:
-	int playerLevel;
-	int playerPower;
-	characterClass activeClass;
-    string playerName;
-    vector<shared_ptr<Card>> heldCards;
+    int playerLevel;
+    int playerPower;
+    characterClass activeClass;
+    std::string playerName;
+    std::vector<std::shared_ptr<Card>> heldCards;
 
 public:
-	GamePlayer(string name = "Default Name", int level = 1, int power = 1, characterClass cls = characterClass())
-		: playerName(name), playerLevel(level), playerPower(power), activeClass(cls) {}
+    GamePlayer(std::string name = "Default Name", int level = 1, int power = 1, characterClass cls = characterClass());
 
     // Getters
-    int getPlayerLevel() const { return playerLevel; }
-    int getPlayerPower() const { return playerPower; }
-    characterClass getActiveClass() const { return activeClass; }
-    string getPlayerName() const { return playerName; }
+    int getPlayerLevel() const;
+    int getPlayerPower() const;
+    characterClass getActiveClass() const;
+    std::string getPlayerName() const;
 
     // Setters
-    void setPlayerLevel(int level) { playerLevel = level; }
-    void setPlayerPower(int power) { playerPower = power; }
-    void setPlayerName(string name) { playerName = name; }
-    void setActiveClass(characterClass cls) { activeClass = cls; }
+    void setPlayerLevel(int level);
+    void setPlayerPower(int power);
+    void setPlayerName(std::string name);
+    void setActiveClass(characterClass cls);
 
-	void addOneLevel() { playerLevel++; }
+    void addOneLevel();
 
-    // card management
-    void addCard(shared_ptr<Card> card) {
-        heldCards.push_back(card);
-    }
+    // Card management
+    void addCard(std::shared_ptr<Card> card);
+    bool removeCard(const std::string& cardName);
+};
 
-
-    bool removeCard(const string& cardName) {
-        for (auto it = heldCards.begin(); it != heldCards.end(); ++it) {
-            if ((*it)->getName() == cardName) {
-                heldCards.erase(it);
-                return true;
-            }
-        }
-        return false; // Not found
-    }
 
 	// old removeCard function
     //void removeCard(const string& cardName) { 
@@ -61,6 +50,3 @@ public:
     //            return c->getName() == cardName;
     //        }), heldCards.end());
     //}
-
-};
-
