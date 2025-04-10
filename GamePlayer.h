@@ -10,7 +10,7 @@ private:
 	int playerPower;
 	characterClass activeClass;
     string playerName;
-    vector<Card> heldCards;
+    vector<shared_ptr<Card>> heldCards;
 
 public:
 	GamePlayer(string name = "Default Name", int level = 1, int power = 1, characterClass cls = characterClass())
@@ -30,6 +30,33 @@ public:
 
 	void addOneLevel() { playerLevel++; }
 
+    // card management
+    void addCard(shared_ptr<Card> card) {
+        heldCards.push_back(card);
+    }
+
+
+    bool removeCard(const string& cardName) {
+        for (auto it = heldCards.begin(); it != heldCards.end(); ++it) {
+            if ((*it)->getName() == cardName) {
+                heldCards.erase(it);
+                return true;
+            }
+        }
+        return false; // Not found
+    }
+
+	// old removeCard function
+    //void removeCard(const string& cardName) { 
+    //    // TODO
+    //    // This remove syntax moves elements to the back of the vector instead of checking and then removing
+    //    // Going linearly throught the vector and deleting one copy is prefered
+    //    // The .erase function only removes the tail end of a container
+    //    heldCards.erase(remove_if(heldCards.begin(), heldCards.end(),
+    //        [&](const shared_ptr<Card>& c) { // [&] captures by reference
+    //            return c->getName() == cardName;
+    //        }), heldCards.end());
+    //}
 
 };
 
