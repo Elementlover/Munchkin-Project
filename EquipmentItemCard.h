@@ -1,5 +1,7 @@
 #pragma once
 #include "Card.h"
+#include <iostream>
+
 class EquipmentItemCard :
     public ItemCard
 {

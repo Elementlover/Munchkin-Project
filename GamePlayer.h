@@ -1,5 +1,9 @@
 #pragma once
 #include "characterClass.h"
+//#include "Card.h" // Full definition needed for shared_ptr<Card>
+#include "characterClass.h"
+
+class Card;
 
 using namespace std;
 

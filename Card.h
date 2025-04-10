@@ -1,9 +1,11 @@
 #pragma once
 #include <string>
-#include "GamePlayer.h"
-#include "GameInstance.h"
 #include <json.hpp>
+#include <iostream>
+//#include "GamePlayer.h"
+//#include "GameInstance.h"
 
+class GamePlayer; // Forward declaration
 class GameInstance;
 
 using namespace std;
