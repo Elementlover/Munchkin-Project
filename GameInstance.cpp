@@ -41,7 +41,8 @@ void GameInstance::run() {
     }
 
     do {
-        activePlayers[0]->addOneLevel();
+        runTurn();
+        currentPlayerIndex = (currentPlayerIndex + 1) % activePlayers.size(); // change this to have a turn counter
     } while (!checkWinCondition());
 
     displayResults();
@@ -71,4 +72,23 @@ void GameInstance::displayResults() {
     for (auto player : activePlayers) {
         cout << player->getPlayerName() << ": Level " << player->getPlayerLevel() << endl;
     }
+}
+
+// Runs the turn of the current player, drawing a card from the deck
+void GameInstance::runTurn() {
+    GamePlayer& player = *activePlayers[currentPlayerIndex];
+    cout << "\n--- " << player.getPlayerName() << "'s turn ---\n";
+
+    // Draw card
+    if (!deck.empty()) {
+        auto card = deck.back();
+        deck.pop_back();
+        cout << player.getPlayerName() << " draws a card: " << card->getName() << endl;
+        card->playCard(player, *this);
+    }
+    else {
+        cout << "No cards left to draw!\n";
+    }
+
+    player.addOneLevel();
 }

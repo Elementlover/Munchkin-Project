@@ -23,4 +23,7 @@ public:
 
 private:
     void displayResults();
+	void displayPlayerStats(); //TODO
+	void displayCardStats(); //TODO
+    void runTurn();
 };
