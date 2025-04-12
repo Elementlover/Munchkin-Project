@@ -12,8 +12,8 @@ private:
 	bool levelRequirement;
 
 public:
-	EquipmentItemCard(string cardName, string cardDescription, int powerBonus, bool twoHanded = false)
-		: ItemCard(cardName, cardDescription), bonusPower(powerBonus), isTwoHanded(twoHanded), isEquipped(false) {
+	EquipmentItemCard(string cardName, string cardDescription, int powerBonus, bool twoHanded = false, bool levelRequirement = false)
+		: ItemCard(cardName, cardDescription), bonusPower(powerBonus), isTwoHanded(twoHanded), isEquipped(false), levelRequirement(false) {
 	}
 
 	void playCard(GamePlayer& player, GameInstance& game) override {

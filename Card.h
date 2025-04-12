@@ -59,12 +59,12 @@ public:
 class MonsterCard : public Card
 {
 private:
-	int power;
+	int level;
 	string monsterType; // e.g., "Undead", "Beast", etc.
 
 public:
-	MonsterCard(string cardName, string cardDescription, int power, string monsterType)
-		: Card(cardName, cardDescription), power(power), monsterType(monsterType) {
+	MonsterCard(string cardName, string cardDescription, int level, string monsterType)
+		: Card(cardName, cardDescription), level(level), monsterType(monsterType) {
 	}
 	void playCard(GamePlayer& player, GameInstance& game) override {
 		// Implement monster-specific logic

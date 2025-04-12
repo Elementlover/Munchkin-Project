@@ -26,5 +26,60 @@
         "effects": {
             "powerBonus": 2
         }
+    },
+    {
+        "name": "Potted Plant",
+        "description": "Elves draw extra Treasure after defeating it.",
+        "type": "Door",
+        "tags": [ "monster" ],
+        "Bad Stuff": {
+            "description": "None. Escape is Automatic",
+            "Escape Roll": 0,
+            "levelChange": 0
+        }
+    },
+    {
+        "name": "Maul Rat",
+        "description": "A creature from hell +3 against Clerics.",
+        "type": "Door",
+        "tags": [ "monster" ],
+        "Bad Stuff": {
+            "description": "She whacks you. Lose a level.",
+            "Escape Roll": 5,
+            "levelChange": -1
+        }
+    },
+    {
+        "name": "Lame Goblin",
+        "description": "The guy can barely stand bro. +1 to Run Away.",
+        "type": "Door",
+        "tags": [ "monster" ],
+        "Bad Stuff": {
+            "description": "He whacks you with his crutch. Lose a level.",
+            "Escape Roll": 4,
+            "levelChange": -1
+        }
+    },
+    {
+        "name": "Pit Bull",
+        "description": "If you can't defeat it, you may distract it (automatic escape) by dropping any wand, pole, or staff. (Fetch Fido!)",
+        "type": "Door",
+        "tags": [ "monster" ],
+        "Bad Stuff": {
+            "description": "He bites you! Lose 2 levels.",
+            "Escape Roll": 5,
+            "levelChange": -2
+        }
+    },
+    {
+        "name": "Drooling Slime",
+        "description": "Yucky slime! +4 against Elves.",
+        "type": "Door",
+        "tags": [ "monster" ],
+        "Bad Stuff": {
+            "description": "TODO: lose footwear Lose a level.",
+            "Escape Roll": 5,
+            "levelChange": -1
+        }
     }
 ]
