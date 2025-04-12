@@ -20,7 +20,7 @@ GameInstance::~GameInstance() {
 
 void GameInstance::run() {
     DeckManager deckManager;
-    deck = deckManager.loadCards("cards.json");
+    deck = deckManager.loadAllCards("cards.json");
 
     cout << "Welcome to Munchkin!\n";
 

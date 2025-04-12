@@ -2,7 +2,7 @@
 #include <string>
 #include <json.hpp>
 #include <iostream>
-//#include "GamePlayer.h"
+#include "GamePlayer.h" // included for now but should be move into a .cpp file to avoid circular dependencies
 //#include "GameInstance.h"
 
 class GamePlayer; // Forward declaration
