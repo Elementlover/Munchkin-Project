@@ -128,6 +128,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Card.cpp" />
     <ClCompile Include="characterClass.cpp" />
     <ClCompile Include="GameInstance.cpp" />
     <ClCompile Include="GamePlayer.cpp" />

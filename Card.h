@@ -20,40 +20,33 @@ private:
 	vector<string> tags; // Tags for card categorization
 
 public:
-	Card(string cardName = "Unknown", string cardDescription = "No description", string cardType = "No Type", vector<string> cardTags = {})
-		: name(cardName), description(cardDescription), type(cardType), tags(cardTags) {
-	}
+	Card(string cardName = "Unknown", string cardDescription = "No description", string cardType = "No Type", vector<string> cardTags = {});
 
 	// Destructor for cleanup of derived classes
-	virtual ~Card() {
-		// Cleanup code if needed
-	}
+	virtual ~Card();
 
 	// Getters
-	string getName() const { return name; }
-	string getType() const { return type; }
-	string getDescription() const { return description; }
-	vector<string> getTags() const { return tags; }
+	string getName() const;
+	string getType() const;
+	string getDescription() const;
+	vector<string> getTags() const;
 
 	// Setters
-	void setName(string cardName) { name = cardName; }
-	void setDescription(string cardDescription) { description = cardDescription; }
+	void setName(string cardName);
+	void setDescription(string cardDescription);
 
 	// Card Actions
 	virtual void playCard(GamePlayer& player, GameInstance& game) = 0;
 };
-// Card Types
-// Derived classes for specific card types
+
+// -------- Derived classes for specific card types --------- //
+
 class ItemCard : public Card
 {
 
 public:
-	ItemCard(string cardName, string cardDescription)
-		: Card(cardName, cardDescription) {
-	}
-	void playCard(GamePlayer& player, GameInstance& game) override {
-		// Implement item-specific logic
-	}
+	ItemCard(string cardName, string cardDescription);
+	void playCard(GamePlayer& player, GameInstance& game) override;
 };
 
 class MonsterCard : public Card
@@ -63,12 +56,8 @@ private:
 	string monsterType; // e.g., "Undead", "Beast", etc.
 
 public:
-	MonsterCard(string cardName, string cardDescription, int level, string monsterType)
-		: Card(cardName, cardDescription), level(level), monsterType(monsterType) {
-	}
-	void playCard(GamePlayer& player, GameInstance& game) override {
-		// Implement monster-specific logic
-	}
+	MonsterCard(string cardName, string cardDescription, int level, string monsterType);
+	void playCard(GamePlayer& player, GameInstance& game) override;
 };
 
 class CurseCard : public Card
@@ -78,15 +67,6 @@ private:
 	int levelChange;
 	
 public:
-	CurseCard(string cardName, string cardDescription, int levelChange = 0, int powerChange = 0)
-		: Card(cardName, cardDescription), levelChange(levelChange), powerChange(powerChange)  {
-	}
-	void playCard(GamePlayer& player, GameInstance& game) override {
-		// Implement curse-specific logic
-		int currentLevel = player.getPlayerLevel();
-		int currentPower = player.getPlayerPower();
-		player.setPlayerLevel(currentLevel + levelChange);
-		player.setPlayerPower(currentPower + powerChange);
-		cout << player.getPlayerName() << " is cursed! You lost " << levelChange << " levels and " << powerChange << " power.\n";
-	}
+	CurseCard(string cardName, string cardDescription, int levelChange = 0, int powerChange = 0);
+	void playCard(GamePlayer& player, GameInstance& game) override;
 };
