@@ -53,10 +53,11 @@ class MonsterCard : public Card
 {
 private:
 	int level;
-	string monsterType; // e.g., "Undead", "Beast", etc.
+	vector<string> WinTags; // Tags for win condition
+	vector<string> LoseTags; // Tags for lose condition
 
 public:
-	MonsterCard(string cardName, string cardDescription, int level, string monsterType);
+	MonsterCard(string cardName, string cardDescription, int level, vector<string> WinningTags, vector<string> LosingTags);
 	void playCard(GamePlayer& player, GameInstance& game) override;
 };
 
