@@ -129,6 +129,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Card.cpp" />
+    <ClCompile Include="CardEffects.cpp" />
     <ClCompile Include="characterClass.cpp" />
     <ClCompile Include="GameInstance.cpp" />
     <ClCompile Include="GamePlayer.cpp" />
@@ -137,6 +138,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Card.h" />
+    <ClInclude Include="CardEffects.h" />
     <ClInclude Include="CardManager.h" />
     <ClInclude Include="characterClass.h" />
     <ClInclude Include="DeckManager.h" />
