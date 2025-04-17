@@ -1,4 +1,5 @@
 #include "DeckManager.h"
+#include <random>
 
 
 std::vector<std::shared_ptr<Card>> DeckManager::loadAllCards(const std::string& filePath) {
@@ -45,6 +46,8 @@ std::vector<std::shared_ptr<Card>> DeckManager::loadCardsByType(const std::strin
                 std::cout << "Failed to create card from JSON data." << std::endl;
             }
         }
+
+        std::shuffle(cards.begin(), cards.end(), std::default_random_engine(std::chrono::system_clock::now().time_since_epoch().count()));
 
         std::cout << "Loaded " << cards.size() << " card(s) with type filter: \"" << typeFilter << "\"\n";
         return cards;
