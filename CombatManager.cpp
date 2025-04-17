@@ -25,7 +25,8 @@ void CombatManager::resolveCombat(GamePlayer& player, MonsterCard& monster, Game
 		}
 	} else {
 		cout << playerName << " was defeated by the monster!\n";
-
+		
+		// TODO check if escape roll is enough to get away
 		for (const auto& [effectName, value] : monster.getLoseEffects()) {
 			CardEffects::applyEffect(player, effectName, value);
 		}

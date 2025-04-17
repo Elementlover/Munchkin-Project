@@ -65,8 +65,8 @@ public:
 
 	// Getters
 	int getLevel() const { return level; }
-	unordered_map<string, int> getWinEffects() const { return WinEffects; }
-	unordered_map<string, int> getLoseEffects() const { return WinEffects; }
+    unordered_map<string, int> const& getWinEffects() const { return WinEffects; }  
+    unordered_map<string, int> const& getLoseEffects() const { return LoseEffects; }
 };
 
 class CurseCard : public Card

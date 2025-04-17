@@ -44,9 +44,36 @@ public:
 			return make_shared<CurseCard>(name, description, levelChange, powerChange);
 		}
 
+        if (find(tags.begin(), tags.end(), "monster") != tags.end()) {
+			int level = data.value("level", 1); // defaults to level 1 if not specified
+
+            auto winEffects = extractEffects(data.value("WinEffect", json::object())); // passes an empty vector to avoid crashes
+            auto loseEffects = extractEffects(data.value("LoseEffect", json::object()));
+
+			return make_shared<MonsterCard>(name, description, level, winEffects, loseEffects);
+		}
+		if (true) { // debug line
+			cout << "Creating Monster Card: " << name << endl; //debug line
+        }
+
         // Add more conditionals for other card types like CurseCard, etc.
 
         return nullptr;
+    }
+
+private:
+	// Function to pull effects from JSON data
+    static unordered_map<string, int> extractEffects(const json& effectData) {
+        unordered_map<string, int> effects;
+
+        for (auto it = effectData.begin(); it != effectData.end(); ++it) {
+            // Only keep numeric effects
+            if (it.value().is_number_integer()) { // check if integer
+                effects[it.key()] = it.value();
+            }
+        }
+
+        return effects;
     }
 };
 
