@@ -8,6 +8,6 @@ namespace CardEffects
 	void applyEffect(GamePlayer& player, const string& effectType, int value);
 
 	// Function to apply a tag effect to a player
-	void applyEffect(GamePlayer& player, const string& tag);
+	//void applyEffect(GamePlayer& player, const string& tag);
 };
 

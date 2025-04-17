@@ -59,6 +59,10 @@ private:
 public:
 	MonsterCard(string cardName, string cardDescription, int level, vector<string> WinningTags, vector<string> LosingTags);
 	void playCard(GamePlayer& player, GameInstance& game) override;
+	// Getters
+	int getLevel() const { return level; }
+	vector<string> getWinTags() const { return WinTags; }
+	vector<string> getLoseTags() const { return LoseTags; }
 };
 
 class CurseCard : public Card

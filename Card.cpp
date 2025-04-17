@@ -3,6 +3,7 @@
 #include <iostream>
 #include "GamePlayer.h" // included for now but should be move into a .cpp file to avoid circular dependencies
 #include "GameInstance.h"
+#include "CombatManager.h"
 
 // Base Card
 Card::Card(string cardName, string cardDescription, string cardType, vector<string> cardTags)
@@ -38,6 +39,7 @@ MonsterCard::MonsterCard(string cardName, string cardDescription, int level, vec
 }
 void MonsterCard::playCard(GamePlayer& player, GameInstance& game) {
 	// Implement monster-specific logic
+	CombatManager::resolveCombat(player, *this, game);
 }
 
 
