@@ -28,14 +28,6 @@ void GameInstance::run() {
 
     if (!deck.empty()) {
         cout << "Deck loaded successfully with " << deck.size() << " cards.\n";
-
-        auto card1 = deck[0];
-        auto card2 = deck[1];
-
-        cout << "First card in deck: " << card1->getName() << endl;
-        card1->playCard(*activePlayers[0], *this);
-
-        card2->playCard(*activePlayers[1], *this);
     }
     else {
         cout << "Failed to load deck.\n";
