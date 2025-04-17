@@ -47,7 +47,9 @@ std::vector<std::shared_ptr<Card>> DeckManager::loadCardsByType(const std::strin
             }
         }
 
-        std::shuffle(cards.begin(), cards.end(), std::default_random_engine(std::chrono::system_clock::now().time_since_epoch().count()));
+        //Shuffle cards
+        std::random_device rd;
+        std::shuffle(cards.begin(), cards.end(), std::default_random_engine(rd()));
 
         std::cout << "Loaded and shuffled " << cards.size() << " card(s) with type filter: \"" << typeFilter << "\"\n";
         return cards;

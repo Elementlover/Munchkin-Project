@@ -60,7 +60,9 @@ std::shared_ptr<Card> GameInstance::drawCard()
     if (deck.empty()) {
         std::cout << "Deck is empty. Restocking from initialDeck.\n";
         deck = initialDeck;
-        std::shuffle(deck.begin(), deck.end(), std::default_random_engine(std::chrono::system_clock::now().time_since_epoch().count()));
+         // Reshuffle deck
+		std::random_device rd;
+        std::shuffle(deck.begin(), deck.end(), std::default_random_engine(rd()));
     }
 
     // safety check
