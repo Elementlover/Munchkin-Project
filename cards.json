@@ -35,7 +35,7 @@
         "WinEffect": {
             "description": "You draw 1 Treasure, and gain 1 Level",
             "TreasureDraw": 1,
-            "LevelChange": 1
+            "levelChange": 1
         },
         "LoseEffect": {
             "description": "None. Escape is Automatic",
@@ -51,7 +51,7 @@
         "WinEffect": {
             "description": "You draw 1 Treasure, and gain 1 Level",
             "TreasureDraw": 1,
-            "LevelChange": 1
+            "levelChange": 1
         },
         "LoseEffect": {
             "description": "She whacks you. Lose a level.",
@@ -67,7 +67,7 @@
         "WinEffect": {
             "description": "You draw 1 Treasure, and gain 1 Level",
             "TreasureDraw": 1,
-            "LevelChange": 1
+            "levelChange": 1
         },
         "Bad Stuff": {
             "description": "He whacks you with his crutch. Lose a level.",
@@ -83,7 +83,7 @@
         "WinEffect": {
             "description": "You draw 1 Treasure, and gain 1 Level",
             "TreasureDraw": 1,
-            "LevelChange": 1
+            "levelChange": 1
         },
         "Bad Stuff": {
             "description": "He bites you! Lose 2 levels.",
@@ -99,7 +99,7 @@
         "WinEffect": {
             "description": "You draw 1 Treasure, and gain 1 Level",
             "TreasureDraw": 1,
-            "LevelChange": 1
+            "levelChange": 1
         },
         "Bad Stuff": {
             "description": "TODO: lose footwear Lose a level.",
