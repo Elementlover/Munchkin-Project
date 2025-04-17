@@ -49,7 +49,7 @@ std::vector<std::shared_ptr<Card>> DeckManager::loadCardsByType(const std::strin
 
         std::shuffle(cards.begin(), cards.end(), std::default_random_engine(std::chrono::system_clock::now().time_since_epoch().count()));
 
-        std::cout << "Loaded " << cards.size() << " card(s) with type filter: \"" << typeFilter << "\"\n";
+        std::cout << "Loaded and shuffled " << cards.size() << " card(s) with type filter: \"" << typeFilter << "\"\n";
         return cards;
     }
     catch (const nlohmann::json::parse_error& e) {
