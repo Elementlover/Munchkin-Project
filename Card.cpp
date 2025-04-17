@@ -34,8 +34,8 @@ void ItemCard::playCard(GamePlayer& player, GameInstance& game) {
 	// Implement item-specific logic
 }
 
-MonsterCard::MonsterCard(string cardName, string cardDescription, int level, vector<string> WinTags, vector<string> LoseTags)
-	: Card(cardName, cardDescription), level(level), WinTags(WinTags), LoseTags(LoseTags) {
+MonsterCard::MonsterCard(string cardName, string cardDescription, int level, unordered_map<string, int> WinEffects, unordered_map<string, int> LoseEffects)
+	: Card(cardName, cardDescription), level(level), WinEffects(WinEffects), LoseEffects(LoseEffects) {
 }
 void MonsterCard::playCard(GamePlayer& player, GameInstance& game) {
 	// Implement monster-specific logic

@@ -53,16 +53,20 @@ class MonsterCard : public Card
 {
 private:
 	int level;
-	vector<string> WinTags; // Tags for win condition
-	vector<string> LoseTags; // Tags for lose condition
+	unordered_map<string, int> WinEffects; // Tags for win condition
+	unordered_map<string, int> LoseEffects; // Tags for lose condition
 
 public:
-	MonsterCard(string cardName, string cardDescription, int level, vector<string> WinningTags, vector<string> LosingTags);
+	MonsterCard(string cardName, string cardDescription, int level,
+		unordered_map<string, int> WinEffects,
+		unordered_map<string, int> LoseEffects);
+
 	void playCard(GamePlayer& player, GameInstance& game) override;
+
 	// Getters
 	int getLevel() const { return level; }
-	vector<string> getWinTags() const { return WinTags; }
-	vector<string> getLoseTags() const { return LoseTags; }
+	unordered_map<string, int> getWinEffects() const { return WinEffects; }
+	unordered_map<string, int> getLoseEffects() const { return WinEffects; }
 };
 
 class CurseCard : public Card

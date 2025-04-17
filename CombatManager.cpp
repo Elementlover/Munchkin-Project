@@ -13,19 +13,21 @@ void CombatManager::resolveCombat(GamePlayer& player, MonsterCard& monster, Game
 	cout << "-> Player Power: " << playerPower << " vs Monster Power: " << monsterPower << endl;
 
 	// TODO FIX CARD EFFECTS
+	// 
+	// Could use structured bindings to unpack the effects but using older version of c++
 	// Combat resolution logic
 	if (playerPower >= monsterPower) { // Victory
 		cout << playerName << " defeated the monster!\n";
 		// Apply effects for winning
 
-		for (const auto& tag : monster.getWinTags()) {
-			//CardEffects::applyEffect(player, tag); 
+		for (const auto& [effectName, value] : monster.getWinEffects()) {
+			CardEffects::applyEffect(player, effectName, value);
 		}
 	} else {
 		cout << playerName << " was defeated by the monster!\n";
 
-		for (const auto& tag : monster.getLoseTags()) {
-			//CardEffects::applyEffect(player, tag);
+		for (const auto& [effectName, value] : monster.getLoseEffects()) {
+			CardEffects::applyEffect(player, effectName, value);
 		}
 	}
 }
