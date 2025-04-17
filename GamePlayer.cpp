@@ -41,7 +41,7 @@ void GamePlayer::addOneLevel() {
     playerLevel++;
 }
 
-void GamePlayer::addCard(std::shared_ptr<Card> card) {
+void GamePlayer::addCardtoHand(std::shared_ptr<Card> card) {
     heldCards.push_back(card);
 }
 
@@ -53,4 +53,12 @@ bool GamePlayer::removeCard(const std::string& cardName) {
         }
     }
     return false;
+}
+
+void GamePlayer::listHeldCards() const
+{
+    for (const auto& heldCard : heldCards) {
+        cout << "Card Name: " << heldCard->getName() << endl;
+		cout << "Description: " << heldCard->getDescription() << endl;
+   }
 }

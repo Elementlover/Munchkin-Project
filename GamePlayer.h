@@ -34,8 +34,10 @@ public:
     void addOneLevel();
 
     // Card management
-    void addCard(std::shared_ptr<Card> card);
+    void addCardtoHand(std::shared_ptr<Card> card);
     bool removeCard(const std::string& cardName);
+	std::vector<std::shared_ptr<Card>> getHeldCards() const { return heldCards; } // Added getter for held cards
+    void listHeldCards() const;
 };
 
 
