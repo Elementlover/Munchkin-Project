@@ -75,6 +75,12 @@ std::shared_ptr<Card> GameInstance::drawCard()
     return card;
 }
 
+void GameInstance::discardCard(std::shared_ptr<Card> card)
+{
+	discardDeck.push_back(card);
+	//cout << "Discarded card: " << card->getName() << endl; // debug
+}
+
 void GameInstance::displayResults() {
     sort(activePlayers.begin(), activePlayers.end(),
         [](const GamePlayer* a, const GamePlayer* b) {
