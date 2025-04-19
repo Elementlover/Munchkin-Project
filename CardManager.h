@@ -33,7 +33,7 @@ public:
 			//cout << "Creating Equipment Card: " << name << endl; //debug line
 			int powerBonus = data["effects"]["powerBonus"];
             bool twoHanded = data["effects"].value("twoHanded", false); // TODO check what the default value is
-			return make_shared<EquipmentItemCard>(name, description, powerBonus, twoHanded);
+			return make_shared<EquipmentItemCard>(name, description, type, powerBonus, twoHanded);
         }
 
 		if (find(tags.begin(), tags.end(), "curse") != tags.end()) {
@@ -41,7 +41,7 @@ public:
 			int levelChange = data["effects"]["levelChange"];
 			int powerChange = data["effects"].value("powerChange", 0);
 
-			return make_shared<CurseCard>(name, description, levelChange, powerChange);
+			return make_shared<CurseCard>(name, description, type, levelChange, powerChange);
 		}
 
         if (find(tags.begin(), tags.end(), "monster") != tags.end()) {
@@ -50,7 +50,7 @@ public:
             auto winEffects = extractEffects(data.value("WinEffect", json::object())); // passes an empty vector to avoid crashes
             auto loseEffects = extractEffects(data.value("LoseEffect", json::object()));
 
-			return make_shared<MonsterCard>(name, description, level, winEffects, loseEffects);
+			return make_shared<MonsterCard>(name, description, type, level, winEffects, loseEffects);
 		}
 		if (true) { // debug line
 			cout << "Creating Monster Card: " << name << endl; //debug line

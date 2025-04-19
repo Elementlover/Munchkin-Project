@@ -26,16 +26,16 @@ void Card::setDescription(string cardDescription) { description = cardDescriptio
 // Derived classes for specific card types
 
 
-ItemCard::ItemCard(string cardName, string cardDescription)
-	: Card(cardName, cardDescription) {
+ItemCard::ItemCard(string cardName, string cardDescription, string type)
+	: Card(cardName, cardDescription, type) {
 	}
 
 void ItemCard::playCard(GamePlayer& player, GameInstance& game) {
 	// Implement item-specific logic
 }
 
-MonsterCard::MonsterCard(string cardName, string cardDescription, int level, unordered_map<string, int> WinEffects, unordered_map<string, int> LoseEffects)
-	: Card(cardName, cardDescription), level(level), WinEffects(WinEffects), LoseEffects(LoseEffects) {
+MonsterCard::MonsterCard(string cardName, string cardDescription, string type, int level, unordered_map<string, int> WinEffects, unordered_map<string, int> LoseEffects)
+	: Card(cardName, cardDescription, type), level(level), WinEffects(WinEffects), LoseEffects(LoseEffects) {
 }
 void MonsterCard::playCard(GamePlayer& player, GameInstance& game) {
 	// Implement monster-specific logic
@@ -43,8 +43,8 @@ void MonsterCard::playCard(GamePlayer& player, GameInstance& game) {
 }
 
 
-CurseCard::CurseCard(string cardName, string cardDescription, int levelChange, int powerChange)
-	: Card(cardName, cardDescription), levelChange(levelChange), powerChange(powerChange)  {
+CurseCard::CurseCard(string cardName, string cardDescription, string type, int levelChange, int powerChange)
+	: Card(cardName, cardDescription, type), levelChange(levelChange), powerChange(powerChange)  {
 }
 void CurseCard::playCard(GamePlayer& player, GameInstance& game) {
 	// Implement curse-specific logic

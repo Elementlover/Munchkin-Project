@@ -22,6 +22,8 @@ GameInstance::~GameInstance() {
 void GameInstance::run() {
     DeckManager deckManager;
     deck = deckManager.loadAllCards("cards.json");
+	doorDeck = deckManager.loadDoorCards("cards.json");
+    treasureDeck = deckManager.loadTreasureCards("cards.json");
 	initialDeck = deck; // Store the initial deck for restocking
 
     cout << "Welcome to Munchkin!\n";

@@ -15,6 +15,9 @@ private:
     std::vector<std::shared_ptr<Card>> initialDeck; // restock
 	std::vector<std::shared_ptr<Card>> discardDeck; // discard pile
 
+	std::vector<std::shared_ptr<Card>> doorDeck;
+	std::vector<std::shared_ptr<Card>> treasureDeck;
+
 public:
     GameInstance();
     ~GameInstance();

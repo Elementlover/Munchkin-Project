@@ -45,7 +45,7 @@ class ItemCard : public Card
 {
 
 public:
-	ItemCard(string cardName, string cardDescription);
+	ItemCard(string cardName, string cardDescription, string type);
 	void playCard(GamePlayer& player, GameInstance& game) override;
 };
 
@@ -57,7 +57,7 @@ private:
 	unordered_map<string, int> LoseEffects; // Tags for lose condition
 
 public:
-	MonsterCard(string cardName, string cardDescription, int level,
+	MonsterCard(string cardName, string cardDescription, string type, int level,
 		unordered_map<string, int> WinEffects,
 		unordered_map<string, int> LoseEffects);
 
@@ -76,6 +76,6 @@ private:
 	int levelChange;
 	
 public:
-	CurseCard(string cardName, string cardDescription, int levelChange = 0, int powerChange = 0);
+	CurseCard(string cardName, string cardDescription, string type, int levelChange = 0, int powerChange = 0);
 	void playCard(GamePlayer& player, GameInstance& game) override;
 };

@@ -7,11 +7,11 @@ std::vector<std::shared_ptr<Card>> DeckManager::loadAllCards(const std::string& 
 }
 
 std::vector<std::shared_ptr<Card>> DeckManager::loadDoorCards(const std::string& filePath) {
-    return loadCardsByType(filePath, "door");
+    return loadCardsByType(filePath, "Door");
 }
 
 std::vector<std::shared_ptr<Card>> DeckManager::loadTreasureCards(const std::string& filePath) {
-    return loadCardsByType(filePath, "treasure");
+    return loadCardsByType(filePath, "Treasure");
 }
 
 std::vector<std::shared_ptr<Card>> DeckManager::loadCardsByType(const std::string& filePath, const std::string& typeFilter) {
