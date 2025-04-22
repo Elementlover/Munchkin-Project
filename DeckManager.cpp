@@ -15,7 +15,7 @@ std::vector<std::shared_ptr<Card>> DeckManager::loadTreasureCards(const std::str
 }
 
 std::vector<std::shared_ptr<Card>> DeckManager::loadCardsByType(const std::string& filePath, const std::string& typeFilter) {
-    std::cout << "Loading cards from " << filePath << std::endl;
+    //std::cout << "Loading cards from " << filePath << std::endl; //debug line
     std::ifstream file(filePath);
 
     if (!file.is_open()) {

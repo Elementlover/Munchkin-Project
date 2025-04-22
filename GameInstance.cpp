@@ -32,8 +32,9 @@ void GameInstance::run() {
 
     cout << "Welcome to Munchkin!\n";
 
-    if (!doorDeck.empty()) {
-        cout << "Deck loaded successfully with " << doorDeck.size() << " cards.\n";
+    if (!doorDeck.empty() && !treasureDeck.empty()) {
+        cout << "Door Deck loaded successfully with " << doorDeck.size() << " cards.\n";
+        cout << "Treasure Deck loaded successfully with " << treasureDeck.size() << " cards.\n";
     }
     else {
         cout << "Failed to load deck.\n";
