@@ -21,15 +21,19 @@ GameInstance::~GameInstance() {
 
 void GameInstance::run() {
     DeckManager deckManager;
-    deck = deckManager.loadAllCards("cards.json");
+
+    //deck = deckManager.loadAllCards("cards.json"); // depreciated
+	//initialDeck = deck; // Store the initial deck for restocking
+
 	doorDeck = deckManager.loadDoorCards("cards.json");
+	doorDeckInitial = doorDeck;
     treasureDeck = deckManager.loadTreasureCards("cards.json");
-	initialDeck = deck; // Store the initial deck for restocking
+	treasureDeckInitial = treasureDeck;
 
     cout << "Welcome to Munchkin!\n";
 
-    if (!deck.empty()) {
-        cout << "Deck loaded successfully with " << deck.size() << " cards.\n";
+    if (!doorDeck.empty()) {
+        cout << "Deck loaded successfully with " << doorDeck.size() << " cards.\n";
     }
     else {
         cout << "Failed to load deck.\n";
@@ -57,26 +61,36 @@ GamePlayer& GameInstance::GetCurrentPlayer() {
     return *activePlayers[currentPlayerIndex];
 }
 
-std::shared_ptr<Card> GameInstance::drawCard()
+std::shared_ptr<Card> GameInstance::drawFromDeck(std::vector<std::shared_ptr<Card>>& targetDeck,
+    std::vector<std::shared_ptr<Card>>& initialDeckRef,
+    const std::string& deckName)
 {
-    if (deck.empty()) {
+    if (targetDeck.empty()) {
         std::cout << "Deck is empty. Restocking from initialDeck.\n";
-        deck = initialDeck;
+        targetDeck = initialDeckRef;
          // Reshuffle deck
 		std::random_device rd;
-        std::shuffle(deck.begin(), deck.end(), std::default_random_engine(rd()));
+        std::shuffle(targetDeck.begin(), targetDeck.end(), std::default_random_engine(rd()));
     }
 
     // safety check
-    if (deck.empty()) {
+    if (targetDeck.empty()) {
         std::cout << "No cards left to draw even after restocking!\n";
         return nullptr;
     }
 
     //draw card
-    auto card = deck.back();
-    deck.pop_back();
+    auto card = targetDeck.back();
+    targetDeck.pop_back();
     return card;
+}
+
+std::shared_ptr<Card> GameInstance::drawTreasureCard() {
+    return drawFromDeck(treasureDeck, treasureDeckInitial, "Treasure Deck");
+}
+
+std::shared_ptr<Card> GameInstance::drawDoorCard() {
+    return drawFromDeck(doorDeck, doorDeckInitial, "Door Deck");
 }
 
 void GameInstance::discardCard(std::shared_ptr<Card> card)
@@ -104,7 +118,7 @@ void GameInstance::runTurn() {
     cout << "\n--- " << player.getPlayerName() << "'s turn ---\n";
 
     // Draw card
-	auto card = drawCard();
+	auto card = drawDoorCard();
      
     // big learning point
 	// Check if card is valid
