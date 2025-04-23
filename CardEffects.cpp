@@ -1,4 +1,6 @@
 #include "CardEffects.h"
+#include "GamePlayer.h"
+#include "GameInstance.h"
 #include <iostream>
 
 // Could be re-implemented as a hashmap? lookup is less efficient than a switch statement or lookup table
@@ -11,8 +13,21 @@ void CardEffects::applyEffect(GamePlayer& player, const std::string& effectType,
 		player.setPlayerPower(player.getPlayerPower() + value);
 		std::cout << player.getPlayerName() << " gained " << value << " power!\n";
 	}
-	else if (effectType == "curse") {
-		std::cout << player.getPlayerName() << " is cursed! Lost " << value << " levels!\n";
+	else if (effectType == "TreasureDraw") {
+		GameInstance* game = player.getGameInstance();
+		if (game) {
+			for (int i = 0; i < value; i++) {
+				auto card = game->drawTreasureCard();
+				if (card) {
+					player.addCardtoHand(card);
+					std::cout << player.getPlayerName() << " drew a treasure card: " << card->getName() << "\n";
+				}
+				else {
+					std::cout << "No more treasure cards to draw!\n";
+					break; // Exit loop if no more cards
+				}
+			}
+		}
 	}
 	else if (effectType == "equip") {
 		// Implement equip logic here
@@ -26,7 +41,7 @@ void CardEffects::applyEffect(GamePlayer& player, const std::string& effectType,
 		// Implement discard logic here
 		std::cout << player.getPlayerName() << " discarded a card!\n";
 	}
-	else if (effectType == "draw") {
+	else if (effectType == "curse") {
 		// Implement draw logic here
 		std::cout << player.getPlayerName() << " drew a card!\n";
 	}

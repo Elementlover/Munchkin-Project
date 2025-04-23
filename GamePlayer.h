@@ -4,12 +4,15 @@
 #include <string>
 #include <vector>
 #include <memory>
+#include "Card.h" // Needed for shared_ptr<Card> use
 
 class Card; // Forward declaration
+class GameInstance; // Forward declaration
 
 class GamePlayer
 {
 private:
+	GameInstance* gameInstance; // Pointer to the game instance
     int playerLevel;
     int playerPower;
     characterClass activeClass;
@@ -19,13 +22,17 @@ private:
 public:
     GamePlayer(std::string name = "Default Name", int level = 1, int power = 1, characterClass cls = characterClass());
 
+	~GamePlayer();
+
     // Getters
+    GameInstance* getGameInstance() const;
     int getPlayerLevel() const;
     int getPlayerPower() const;
     characterClass getActiveClass() const;
     std::string getPlayerName() const;
 
     // Setters
+    void setGameInstance(GameInstance* game);
     void setPlayerLevel(int level);
     void setPlayerPower(int power);
     void setPlayerName(std::string name);
@@ -36,7 +43,7 @@ public:
     // Card management
     void addCardtoHand(std::shared_ptr<Card> card);
     bool removeCard(const std::string& cardName);
-	std::vector<std::shared_ptr<Card>> getHeldCards() const { return heldCards; } // Added getter for held cards
+    std::vector<std::shared_ptr<Card>> getHeldCards() const;
     void listHeldCards() const;
 };
 
