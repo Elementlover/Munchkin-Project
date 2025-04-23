@@ -1,8 +1,17 @@
 #include "GamePlayer.h"
+#include "GameInstance.h"
 #include "Card.h" // Needed for shared_ptr<Card> use
 
 GamePlayer::GamePlayer(std::string name, int level, int power, characterClass cls)
     : playerName(name), playerLevel(level), playerPower(power), activeClass(cls) {
+}
+
+GamePlayer::~GamePlayer() {
+	// Destructor logic if needed
+}
+
+GameInstance* GamePlayer::getGameInstance() const {
+	return gameInstance;
 }
 
 int GamePlayer::getPlayerLevel() const {
@@ -19,6 +28,14 @@ characterClass GamePlayer::getActiveClass() const {
 
 std::string GamePlayer::getPlayerName() const {
     return playerName;
+}
+
+std::vector<std::shared_ptr<Card>> GamePlayer::getHeldCards() const {
+	return heldCards;
+}
+
+void GamePlayer::setGameInstance(GameInstance* game) {
+	gameInstance = game;
 }
 
 void GamePlayer::setPlayerLevel(int level) {

@@ -11,6 +11,10 @@ GameInstance::GameInstance() {
     activePlayers.push_back(new GamePlayer("Alice"));
     activePlayers.push_back(new GamePlayer("Ben"));
     activePlayers.push_back(new GamePlayer("Cathy"));
+
+    for (auto* player : activePlayers) {
+        player->setGameInstance(this);
+    }
 }
 
 GameInstance::~GameInstance() {
