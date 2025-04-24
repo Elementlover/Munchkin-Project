@@ -79,3 +79,12 @@ void GamePlayer::listHeldCards() const
 		cout << "Description: " << heldCard->getDescription() << endl;
    }
 }
+
+std::vector<std::string> GamePlayer::getAvailableActions() const {
+    return {
+        "Draw Door Card",
+        "View Hand",
+        "End Turn"
+		// TODO check for other actions based on held cards
+    };
+}

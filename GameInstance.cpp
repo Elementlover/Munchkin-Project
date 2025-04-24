@@ -122,17 +122,49 @@ void GameInstance::runTurn() {
     GamePlayer& player = *activePlayers[currentPlayerIndex];
     cout << "\n--- " << player.getPlayerName() << "'s turn ---\n";
 
-    // Draw card
-	auto card = drawDoorCard();
-     
-    // big learning point
-	// Check if card is valid
-    if (!card) {
-        cout << "No card drawn. Skipping turn.\n";
-        return;
-    }
+    bool turnInProgress = true;
 
-    cout << player.getPlayerName() << " draws a card: " << card->getName() << endl;
-    card->playCard(player, *this);
-    //player.addOneLevel();
+    while (turnInProgress) {
+        auto options = player.getAvailableActions();
+
+        cout << "Choose an action:\n";
+        for (size_t i = 0; i < options.size(); ++i) {
+            cout << i + 1 << ". " << options[i] << "\n";
+        }
+
+        int choice;
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        if (cin.fail() || choice < 1 || choice > static_cast<int>(options.size())) {
+            cin.clear();
+            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            cout << "Invalid choice. Try again.\n";
+            continue;
+        }
+
+        const std::string& selectedAction = options[choice - 1];
+
+        if (selectedAction == "Draw Door Card") {
+            auto card = drawDoorCard();
+            if (!card) {
+                cout << "No card drawn. Skipping turn.\n";
+            }
+            else {
+                cout << player.getPlayerName() << " draws a card: " << card->getName() << endl;
+                card->playCard(player, *this);
+            }
+            turnInProgress = false; // End turn after drawing
+        }
+        else if (selectedAction == "View Hand") {
+            player.listHeldCards();
+        }
+        else if (selectedAction == "End Turn") {
+            cout << player.getPlayerName() << " ends their turn.\n";
+            turnInProgress = false;
+        }
+        else {
+            cout << "Action not implemented yet: " << selectedAction << "\n";
+        }
+    }
 }

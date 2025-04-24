@@ -45,6 +45,9 @@ public:
     bool removeCard(const std::string& cardName);
     std::vector<std::shared_ptr<Card>> getHeldCards() const;
     void listHeldCards() const;
+
+	// Card actions
+    std::vector<std::string> getAvailableActions() const;
 };
 
 
