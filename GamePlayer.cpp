@@ -2,8 +2,8 @@
 #include "GameInstance.h"
 #include "Card.h" // Needed for shared_ptr<Card> use
 
-GamePlayer::GamePlayer(std::string name, int level, int power, characterClass cls)
-    : playerName(name), playerLevel(level), playerPower(power), activeClass(cls) {
+GamePlayer::GamePlayer(std::string name, int level, int power, characterClass cls)  
+   : playerName(name), playerLevel(level), playerPower(power), activeClass(cls), gameInstance(nullptr) {  
 }
 
 GamePlayer::~GamePlayer() {
