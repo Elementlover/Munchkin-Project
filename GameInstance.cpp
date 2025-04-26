@@ -127,6 +127,7 @@ void GameInstance::runTurn() {
     while (turnInProgress) {
         auto options = player.getAvailableActions();
 
+        cout << endl;
         cout << "Choose an action:\n";
         for (size_t i = 0; i < options.size(); ++i) {
             cout << i + 1 << ". " << options[i] << "\n";
@@ -160,12 +161,51 @@ void GameInstance::runTurn() {
             }
             else {
                 cout << player.getPlayerName() << " draws a card: " << card->getName() << endl;
+                cout << endl;
                 card->playCard(player, *this);
             }
             turnInProgress = false; // End turn after drawing
         }
         else if (selectedAction == "View Hand") {
-            player.listHeldCards();
+			while (true) {
+                player.listHeldCards();
+
+			    // check for empty hand
+                if (player.getHeldCards().empty()) {
+                    break;
+                }
+
+                cout << "Enter the number of a card to play it, or 0 to go back: ";
+                std::string input;
+                std::getline(std::cin >> std::ws, input);
+                cout << endl;
+
+                // Validate input
+			    if (!std::all_of(input.begin(), input.end(), ::isdigit)) {
+				    cout << "Invalid input. Please enter a number.\n";
+				    continue;
+			    }
+
+			    int cardChoice = std::stoi(input);
+			    if (cardChoice == 0) {
+				    cout << "Returning to action selection.\n";
+				    break;
+			    }
+
+			    if (cardChoice < 1 || cardChoice > static_cast<int>(player.getHeldCards().size())) {
+				    cout << "Invalid selection. Try again.\n";
+                    cout << endl;
+				    continue;
+			    }
+
+                cout << endl;
+			    // Play the selected card
+			    auto selectedCard = player.getHeldCards()[cardChoice - 1];
+			    cout << "Playing card: " << selectedCard->getName() << endl;
+			    selectedCard->playCard(player, *this);
+				player.removeCard(selectedCard->getName()); // Remove the card from hand
+            }
+			continue; // Go back to action selection after playing a card
         }
         else if (selectedAction == "Skip Turn") {
             cout << player.getPlayerName() << " ends their turn.\n";

@@ -76,15 +76,13 @@ void GamePlayer::listHeldCards() const
 {
 	if (heldCards.empty()) {
 		cout << "No cards in hand." << endl;
-        cout << endl;
 		return;
 	}
 
 	cout << "Held Cards:" << endl;
-    for (const auto& heldCard : heldCards) {
-        cout << endl;
-        cout << "Card Name: " << heldCard->getName() << endl;
-		cout << "Description: " << heldCard->getDescription() << endl;
+    for (size_t i = 0; i < heldCards.size(); ++i) {
+        //cout << endl; // syntax
+        cout << i + 1 << ": " << heldCards[i]->getName() << " - " << heldCards[i]->getDescription() << endl;
 	}
 	cout << endl;
 }
