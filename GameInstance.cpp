@@ -132,14 +132,21 @@ void GameInstance::runTurn() {
             cout << i + 1 << ". " << options[i] << "\n";
         }
 
-        int choice;
+        int choice = -1;
+        std::string inputLine;
         cout << "Enter your choice: ";
-        cin >> choice;
+        std::getline(std::cin >> std::ws, inputLine);  // std::ws eats up any leading whitespace
 		cout << endl;
 
-		if (cin.fail() || choice < 1 || choice > static_cast<int>(options.size())) { // Handle input santization
-            cin.clear();
-            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        // Reject non-digit input
+        if (!std::all_of(inputLine.begin(), inputLine.end(), ::isdigit)) {
+            cout << "Invalid input. Please enter a number.\n";
+            continue;
+        }
+
+        choice = std::stoi(inputLine);
+
+        if (choice < 1 || choice > static_cast<int>(options.size())) {
             cout << "Invalid choice. Try again.\n";
             continue;
         }
