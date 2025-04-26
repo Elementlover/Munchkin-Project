@@ -74,17 +74,26 @@ bool GamePlayer::removeCard(const std::string& cardName) {
 
 void GamePlayer::listHeldCards() const
 {
+	if (heldCards.empty()) {
+		cout << "No cards in hand." << endl;
+        cout << endl;
+		return;
+	}
+
+	cout << "Held Cards:" << endl;
     for (const auto& heldCard : heldCards) {
+        cout << endl;
         cout << "Card Name: " << heldCard->getName() << endl;
 		cout << "Description: " << heldCard->getDescription() << endl;
-   }
+	}
+	cout << endl;
 }
 
 std::vector<std::string> GamePlayer::getAvailableActions() const {
     return {
         "Draw Door Card",
         "View Hand",
-        "End Turn"
+        "Skip Turn"
 		// TODO check for other actions based on held cards
     };
 }

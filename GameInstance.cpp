@@ -71,7 +71,7 @@ std::shared_ptr<Card> GameInstance::drawFromDeck(std::vector<std::shared_ptr<Car
     const std::string& deckName)
 {
     if (targetDeck.empty()) {
-        std::cout << "Deck is empty. Restocking from initialDeck.\n";
+        std::cout << "Deck is empty. Restocking...\n";
         targetDeck = initialDeckRef;
          // Reshuffle deck
 		std::random_device rd;
@@ -135,8 +135,9 @@ void GameInstance::runTurn() {
         int choice;
         cout << "Enter your choice: ";
         cin >> choice;
+		cout << endl;
 
-        if (cin.fail() || choice < 1 || choice > static_cast<int>(options.size())) {
+		if (cin.fail() || choice < 1 || choice > static_cast<int>(options.size())) { // Handle input santization
             cin.clear();
             cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             cout << "Invalid choice. Try again.\n";
@@ -159,7 +160,7 @@ void GameInstance::runTurn() {
         else if (selectedAction == "View Hand") {
             player.listHeldCards();
         }
-        else if (selectedAction == "End Turn") {
+        else if (selectedAction == "Skip Turn") {
             cout << player.getPlayerName() << " ends their turn.\n";
             turnInProgress = false;
         }
