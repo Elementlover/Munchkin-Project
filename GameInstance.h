@@ -45,4 +45,7 @@ private:
 	void displayPlayerStats(); //TODO
 	void displayCardStats(); //TODO
     void runTurn();
+
+	// input utility
+	int getValidatedNumericInput(int min, int max, const std::string& prompt);
 };

@@ -133,24 +133,7 @@ void GameInstance::runTurn() {
             cout << i + 1 << ". " << options[i] << "\n";
         }
 
-        int choice = -1;
-        std::string inputLine;
-        cout << "Enter your choice: ";
-        std::getline(std::cin >> std::ws, inputLine);  // std::ws eats up any leading whitespace
-		cout << endl;
-
-        // Reject non-digit input
-        if (!std::all_of(inputLine.begin(), inputLine.end(), ::isdigit)) {
-            cout << "Invalid input. Please enter a number.\n";
-            continue;
-        }
-
-        choice = std::stoi(inputLine);
-
-        if (choice < 1 || choice > static_cast<int>(options.size())) {
-            cout << "Invalid choice. Try again.\n";
-            continue;
-        }
+		int choice = choice = getValidatedNumericInput(1, static_cast<int>(options.size()), "Enter your choice: ");
 
         const std::string& selectedAction = options[choice - 1];
 
@@ -175,28 +158,8 @@ void GameInstance::runTurn() {
                     break;
                 }
 
-                cout << "Enter the number of a card to play it, or 0 to go back: ";
-                std::string input;
-                std::getline(std::cin >> std::ws, input);
-                cout << endl;
-
-                // Validate input
-			    if (!std::all_of(input.begin(), input.end(), ::isdigit)) {
-				    cout << "Invalid input. Please enter a number.\n";
-				    continue;
-			    }
-
-			    int cardChoice = std::stoi(input);
-			    if (cardChoice == 0) {
-				    cout << "Returning to action selection.\n";
-				    break;
-			    }
-
-			    if (cardChoice < 1 || cardChoice > static_cast<int>(player.getHeldCards().size())) {
-				    cout << "Invalid selection. Try again.\n";
-                    cout << endl;
-				    continue;
-			    }
+                int cardChoice = getValidatedNumericInput(0, static_cast<int>(player.getHeldCards().size()),
+                    "Enter the number of a card to play it, or 0 to go back: ");
 
                 cout << endl;
 			    // Play the selected card
@@ -215,4 +178,30 @@ void GameInstance::runTurn() {
             cout << "Action not implemented yet: " << selectedAction << "\n";
         }
     }
+}
+
+int GameInstance::getValidatedNumericInput(int min, int max, const std::string& prompt) {
+    std::string inputLine;
+    int choice = -1;
+
+    while (true) {
+		std::cout << prompt;
+		std::getline(std::cin >> std::ws, inputLine);  // std::ws eats up any leading whitespace
+		std::cout << std::endl;
+
+		// Reject non-digit input
+		if (!std::all_of(inputLine.begin(), inputLine.end(), ::isdigit)) {
+			std::cout << "Invalid input. Please enter a number.\n";
+			continue;
+		}
+
+		// Convert to integer and check range
+		choice = std::stoi(inputLine);
+		if (choice < min || choice > max) {
+			std::cout << "Invalid choice. Try again.\n";
+			continue;
+		}
+
+	    return choice;
+	}
 }
