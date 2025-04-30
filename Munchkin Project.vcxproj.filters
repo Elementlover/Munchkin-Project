@@ -68,6 +68,9 @@
     <ClInclude Include="CombatManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="EquipmentSlot.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="cards.json" />

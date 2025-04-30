@@ -146,6 +146,7 @@
     <ClInclude Include="CombatManager.h" />
     <ClInclude Include="DeckManager.h" />
     <ClInclude Include="EquipmentItemCard.h" />
+    <ClInclude Include="EquipmentSlot.h" />
     <ClInclude Include="GameInstance.h" />
     <ClInclude Include="GamePlayer.h" />
   </ItemGroup>
