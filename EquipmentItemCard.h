@@ -1,6 +1,7 @@
 #pragma once
 #include "Card.h"
 #include <iostream>
+#include "EquipmentSlot.h"
 
 class EquipmentItemCard :
     public ItemCard
@@ -10,11 +11,14 @@ private:
 	bool isTwoHanded;
 	bool isEquipped;
 	bool levelRequirement;
+	EquipmentSlot slotType;
 
 public:
-	EquipmentItemCard(string cardName, string cardDescription, string type, int powerBonus, bool twoHanded = false, bool levelRequirement = false)
-		: ItemCard(cardName, cardDescription, type), bonusPower(powerBonus), isTwoHanded(twoHanded), isEquipped(false), levelRequirement(false) {
+	EquipmentItemCard(string cardName, string cardDescription, string type, int powerBonus, bool twoHanded = false, EquipmentSlot slot = EquipmentSlot::OneHand, bool levelRequirement = false)
+		: ItemCard(cardName, cardDescription, type), bonusPower(powerBonus), isTwoHanded(twoHanded), isEquipped(false), slotType(slot), levelRequirement(false) {
 	}
+
+	EquipmentSlot getSlotType() const { return slotType; }
 
 	void playCard(GamePlayer& player, GameInstance& game) override {
 		int currentPower = player.getPlayerPower();

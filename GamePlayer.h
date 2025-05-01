@@ -4,7 +4,9 @@
 #include <string>
 #include <vector>
 #include <memory>
+#include <map>
 #include "Card.h" // Needed for shared_ptr<Card> use
+#include "EquipmentItemCard.h" // Needed for shared_ptr<EquipmentItemCard> use
 
 class Card; // Forward declaration
 class GameInstance; // Forward declaration
@@ -48,6 +50,13 @@ public:
 
 	// Card actions
     std::vector<std::string> getAvailableActions() const;
+
+    //Equipment
+	bool equipItem(const shared_ptr<EquipmentItemCard> item);
+	bool unequipItem(const shared_ptr<EquipmentItemCard> cardName);
+	void recalculatePower();
+	std::map<EquipmentSlot, std::shared_ptr<EquipmentItemCard>>& getEquippedItems(); // TODO
+
 };
 
 

@@ -7,5 +7,6 @@ enum class EquipmentSlot {
     OneHand,
     TwoHands,
     Hireling,
+	null // No equipment slot
     // Add more slots as needed
 };
