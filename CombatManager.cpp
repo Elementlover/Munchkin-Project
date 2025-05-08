@@ -1,5 +1,6 @@
 #include "CombatManager.h"
 #include <iostream>
+#include <random>
 
 void CombatManager::resolveCombat(GamePlayer& player, MonsterCard& monster, GameInstance& game)
 {
@@ -25,10 +26,36 @@ void CombatManager::resolveCombat(GamePlayer& player, MonsterCard& monster, Game
 		}
 	} else {
 		cout << playerName << " was defeated by the monster!\n";
-		
-		// TODO check if escape roll is enough to get away
-		for (const auto& [effectName, value] : monster.getLoseEffects()) {
-			CardEffects::applyEffect(player, effectName, value);
+
+		const auto& loseEffects = monster.getLoseEffects();
+
+		// Check for Escape Roll
+		auto escapeIt = loseEffects.find("Escape Roll");
+		if (escapeIt != loseEffects.end()) {
+			int requiredRoll = escapeIt->second;
+
+			// Simulate dice roll (1–6)
+			std::random_device rd;
+			std::mt19937 gen(rd());
+			std::uniform_int_distribution<> dist(1, 6);
+			int roll = dist(gen);
+
+			std::cout << playerName << " attempts to escape! Needs " << requiredRoll << "+... Rolled a " << roll << ".\n";
+
+			if (roll >= requiredRoll) {
+				std::cout << playerName << " escapes successfully with a " << roll << "!\n";
+				return; // Avoid applying lose effects
+			}
+			else {
+				std::cout << playerName << " fails to escape with a " << roll << "!\n";
+			}
+		}
+
+		// Apply all other lose effects
+		for (const auto& [effectName, value] : loseEffects) {
+			if (effectName != "Escape Roll") { // Skip the escape check effect
+				CardEffects::applyEffect(player, effectName, value);
+			}
 		}
 	}
 }
