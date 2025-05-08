@@ -132,7 +132,7 @@
     <ClCompile Include="Card.cpp" />
     <ClCompile Include="CardEffects.cpp" />
     <ClCompile Include="CardManager.cpp" />
-    <ClCompile Include="characterClass.cpp" />
+    <ClCompile Include="CharacterClass.cpp" />
     <ClCompile Include="CombatManager.cpp" />
     <ClCompile Include="EquipmentItemCard.cpp" />
     <ClCompile Include="GameInstance.cpp" />
@@ -144,7 +144,7 @@
     <ClInclude Include="Card.h" />
     <ClInclude Include="CardEffects.h" />
     <ClInclude Include="CardManager.h" />
-    <ClInclude Include="characterClass.h" />
+    <ClInclude Include="CharacterClass.h" />
     <ClInclude Include="CombatManager.h" />
     <ClInclude Include="DeckManager.h" />
     <ClInclude Include="EquipmentItemCard.h" />

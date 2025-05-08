@@ -13,41 +13,50 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\Main">
+      <UniqueIdentifier>{0720241d-e5b9-4735-863d-015d636f9dd2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Cards">
+      <UniqueIdentifier>{d6bc9754-3b4a-4fc9-b115-9694ad686043}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Main\Player">
+      <UniqueIdentifier>{9490b434-cc71-422f-a1df-db6e5417c801}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Munchkin Project.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="characterClass.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GamePlayer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GameInstance.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="DeckManager.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="CardManager.cpp">
+      <Filter>Source Files\Cards</Filter>
     </ClCompile>
     <ClCompile Include="Card.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Cards</Filter>
     </ClCompile>
     <ClCompile Include="CardEffects.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Cards</Filter>
     </ClCompile>
-    <ClCompile Include="CombatManager.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="GameInstance.cpp">
+      <Filter>Source Files\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="Munchkin Project.cpp">
+      <Filter>Source Files\Main</Filter>
     </ClCompile>
     <ClCompile Include="EquipmentItemCard.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Cards</Filter>
     </ClCompile>
-    <ClCompile Include="CardManager.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="CombatManager.cpp">
+      <Filter>Source Files\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="DeckManager.cpp">
+      <Filter>Source Files\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="GamePlayer.cpp">
+      <Filter>Source Files\Main\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="CharacterClass.cpp">
+      <Filter>Source Files\Main\Player</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="characterClass.h">
+    <ClInclude Include="CharacterClass.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GamePlayer.h">

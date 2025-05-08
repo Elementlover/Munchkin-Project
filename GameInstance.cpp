@@ -162,6 +162,10 @@ void GameInstance::runTurn() {
                     "Enter the number of a card to play it, or 0 to go back: ");
 
                 cout << endl;
+
+				if (cardChoice == 0) {
+					break; // Go back to action selection
+				}
 			    // Play the selected card
 			    auto selectedCard = player.getHeldCards()[cardChoice - 1];
 			    cout << "Playing card: " << selectedCard->getName() << endl;
