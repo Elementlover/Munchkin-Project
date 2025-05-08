@@ -22,19 +22,18 @@ int EquipmentItemCard::getPowerBonus() const {
 }
 
 void EquipmentItemCard::playCard(GamePlayer& player, GameInstance& game) {
-    int currentPower = player.getPlayerPower();
-    int currentLevel = player.getPlayerLevel();
+    // Check if already equipped via GamePlayer (not this flag alone)
+    EquipmentSlot slot = getSlotType();
 
-    // TODO: Level requirements, tag checks, proper logic
-    if (!isEquipped) {
-        player.setPlayerPower(currentPower + bonusPower);
-        isEquipped = true;
-        std::cout << player.getPlayerName() << " equipped " << getName()
-            << " and gained " << bonusPower << " power (now "
-            << player.getPlayerPower() << ").\n";
+    auto equipped = player.getEquippedItems();
+    if (equipped.find(slot) != equipped.end() && equipped.at(slot)->getName() == this->getName()) {
+        std::cout << player.getPlayerName() << " already has " << getName() << " equipped.\n";
+        return;
     }
-    else {
-        std::cout << player.getPlayerName() << " already has " << getName()
-            << " equipped.\n";
-    }
+
+    player.equipItem(std::make_shared<EquipmentItemCard>(*this));
+    isEquipped = true;
+
+    std::cout << player.getPlayerName() << " equipped " << getName()
+        << " for +" << getPowerBonus() << " power.\n";
 }

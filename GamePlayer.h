@@ -21,7 +21,7 @@ private:
     characterClass activeClass;
     std::string playerName;
     std::vector<std::shared_ptr<Card>> heldCards;
-    std::unordered_map<EquipmentSlot, std::shared_ptr<Card>> equippedItems;
+    std::unordered_map<EquipmentSlot, std::shared_ptr<EquipmentItemCard>> equippedItems;
 
 
 public:
@@ -35,6 +35,7 @@ public:
     int getPlayerPower() const;
     characterClass getActiveClass() const;
     std::string getPlayerName() const;
+	const std::unordered_map<EquipmentSlot, std::shared_ptr<EquipmentItemCard>>& getEquippedItems() const; // only retures EquipmentItemCardS
 
     // Setters
     void setGameInstance(GameInstance* game);

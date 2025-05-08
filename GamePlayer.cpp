@@ -38,6 +38,10 @@ std::vector<std::shared_ptr<Card>> GamePlayer::getHeldCards() const {
 	return heldCards;
 }
 
+const std::unordered_map<EquipmentSlot, std::shared_ptr<EquipmentItemCard>>& GamePlayer::getEquippedItems() const {
+    return equippedItems;
+}
+
 void GamePlayer::setGameInstance(GameInstance* game) {
 	gameInstance = game;
 }
@@ -149,11 +153,7 @@ void GamePlayer::recalculatePower() {
     // Sum power bonuses from all equipped items
     for (const auto& [slot, card] : equippedItems) {
         if (card) {
-            // Cast the card to EquipmentItemCard
-            auto equipmentCard = std::dynamic_pointer_cast<EquipmentItemCard>(card);
-            if (equipmentCard) {
-                totalPower += equipmentCard->getPowerBonus();
-            }
+            totalPower += card->getPowerBonus();
         }
     }
 
