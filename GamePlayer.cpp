@@ -97,6 +97,7 @@ std::vector<std::string> GamePlayer::getAvailableActions() const {
     return {
         "Draw Door Card",
         "View Hand",
+        "View Equipped Items",
         "Skip Turn"
 		// TODO check for other actions based on held cards
     };
@@ -112,7 +113,7 @@ void GamePlayer::equipItem(std::shared_ptr<EquipmentItemCard> equipmentCard) {
     }
 
     equippedItems[slot] = equipmentCard;
-    setPlayerPower(getPlayerPower() + equipmentCard->getPowerBonus()); // or call a recalc function
+	recalculatePower(); // Recalculate power after equipping
     std::cout << "Equipped: " << equipmentCard->getName() << "\n";
 }
 
@@ -138,4 +139,21 @@ std::string slotToString(EquipmentSlot slot) {
     case EquipmentSlot::Hireling: return "Hireling";
     default: return "Unknown";
     }
+}
+
+void GamePlayer::recalculatePower() {
+    int totalPower = 0;
+
+    // Sum power bonuses from all equipped items
+    for (const auto& [slot, card] : equippedItems) {
+        if (card) {
+            // Cast the card to EquipmentItemCard
+            auto equipmentCard = std::dynamic_pointer_cast<EquipmentItemCard>(card);
+            if (equipmentCard) {
+                totalPower += equipmentCard->getPowerBonus();
+            }
+        }
+    }
+
+    setPlayerPower(totalPower);
 }

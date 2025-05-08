@@ -52,6 +52,7 @@ public:
     void listHeldCards() const;
 
 	// Card actions
+    void recalculatePower();
     std::vector<std::string> getAvailableActions() const;
     void equipItem(std::shared_ptr<EquipmentItemCard> equipmentCard);
     void listEquippedItems() const;

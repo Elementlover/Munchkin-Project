@@ -178,6 +178,10 @@ void GameInstance::runTurn() {
             cout << player.getPlayerName() << " ends their turn.\n";
             turnInProgress = false;
         }
+        else if (selectedAction == "View Equipped Items") {
+            player.listEquippedItems();
+            continue; // Stay in the action loop
+        }
         else {
             cout << "Action not implemented yet: " << selectedAction << "\n";
         }
