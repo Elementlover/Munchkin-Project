@@ -144,6 +144,8 @@ std::string slotToString(EquipmentSlot slot) {
 void GamePlayer::recalculatePower() {
     int totalPower = 0;
 
+	totalPower += playerLevel; // Base power from level
+
     // Sum power bonuses from all equipped items
     for (const auto& [slot, card] : equippedItems) {
         if (card) {
