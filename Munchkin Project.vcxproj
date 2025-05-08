@@ -131,8 +131,10 @@
   <ItemGroup>
     <ClCompile Include="Card.cpp" />
     <ClCompile Include="CardEffects.cpp" />
+    <ClCompile Include="CardManager.cpp" />
     <ClCompile Include="characterClass.cpp" />
     <ClCompile Include="CombatManager.cpp" />
+    <ClCompile Include="EquipmentItemCard.cpp" />
     <ClCompile Include="GameInstance.cpp" />
     <ClCompile Include="GamePlayer.cpp" />
     <ClCompile Include="Munchkin Project.cpp" />
