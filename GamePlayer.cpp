@@ -51,7 +51,7 @@ void GamePlayer::setPlayerLevel(int level) {
         level = 1; // Ensure the power doesn't go below 1
     }
     else {
-        playerLevel = level;
+		playerLevel = level;
     }
 }
 
@@ -92,6 +92,7 @@ void GamePlayer::listHeldCards() const
 		return;
 	}
 
+    cout << endl;
 	cout << "Held Cards:" << endl;
     for (size_t i = 0; i < heldCards.size(); ++i) {
         //cout << endl; // syntax

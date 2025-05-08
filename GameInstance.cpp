@@ -45,6 +45,21 @@ void GameInstance::run() {
         return;
     }
 
+	// Hand out 4 treasure and 4 Door cards to each player
+    for (auto* player : activePlayers) {
+        for (int i = 0; i < 4; ++i) {
+            auto doorCard = drawDoorCard();
+            if (doorCard) {
+                player->addCardtoHand(doorCard);
+            }
+
+            auto treasureCard = drawTreasureCard();
+            if (treasureCard) {
+                player->addCardtoHand(treasureCard);
+            }
+        }
+    }
+
     do {
         runTurn();
         currentPlayerIndex = (currentPlayerIndex + 1) % activePlayers.size(); // change this to have a turn counter
@@ -134,8 +149,7 @@ void GameInstance::runTurn() {
             cout << i + 1 << ". " << options[i] << "\n";
         }
 
-		int choice = choice = getValidatedNumericInput(1, static_cast<int>(options.size()), "Enter your choice: ");
-
+        int choice = getValidatedNumericInput(1, static_cast<int>(options.size()), "Enter your choice: ");
         const std::string& selectedAction = options[choice - 1];
 
         if (selectedAction == "Draw Door Card") {
@@ -146,15 +160,24 @@ void GameInstance::runTurn() {
             else {
                 cout << player.getPlayerName() << " draws a card: " << card->getName() << endl;
                 cout << endl;
-                card->playCard(player, *this);
+
+                // Use dynamic_cast to check if the card is a MonsterCard
+                MonsterCard* monsterCard = dynamic_cast<MonsterCard*>(card.get()); // Cast to MonsterCard
+                if (monsterCard) {  // If the cast succeeds, it's a MonsterCard
+                    cout << player.getPlayerName() << " encounters a monster: " << card->getName() << endl;
+                    monsterCard->playCard(player, *this);  // Resolve combat with the monster
+                    turnInProgress = false;  // End the turn after fighting the monster
+                }
+                else {
+                    card->playCard(player, *this);  // Otherwise, just play the card normally
+                }
             }
-            turnInProgress = false; // End turn after drawing
         }
         else if (selectedAction == "View Hand") {
-			while (true) {
+            while (true) {
                 player.listHeldCards();
 
-			    // check for empty hand
+                // check for empty hand
                 if (player.getHeldCards().empty()) {
                     break;
                 }
@@ -164,20 +187,25 @@ void GameInstance::runTurn() {
 
                 cout << endl;
 
-				if (cardChoice == 0) {
-					break; // Go back to action selection
-				}
-			    // Play the selected card
-			    auto selectedCard = player.getHeldCards()[cardChoice - 1];
-			    cout << "Playing card: " << selectedCard->getName() << endl;
-			    selectedCard->playCard(player, *this);
+                if (cardChoice == 0) {
+                    break; // Go back to action selection
+                }
+
+                // Play the selected card
+                auto selectedCard = player.getHeldCards()[cardChoice - 1];
+                cout << "Playing card: " << selectedCard->getName() << endl;
+                selectedCard->playCard(player, *this);
+
+				// End the turn if it's a monster card
+
+
                 // Only remove the card from hand if it’s still there (e.g., not equipped or discarded during playCard)
                 const auto& hand = player.getHeldCards();
                 if (std::find(hand.begin(), hand.end(), selectedCard) != hand.end()) {
                     player.removeCard(selectedCard->getName());
                 }
             }
-			continue; // Go back to action selection after playing a card
+            continue; // Go back to action selection after playing a card
         }
         else if (selectedAction == "Skip Turn") {
             cout << player.getPlayerName() << " ends their turn.\n";
