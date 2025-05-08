@@ -8,18 +8,33 @@
 using namespace std;
 
 GameInstance::GameInstance() {
-    activePlayers.push_back(new GamePlayer("Alice"));
-    activePlayers.push_back(new GamePlayer("Ben"));
-    activePlayers.push_back(new GamePlayer("Cathy"));
+    //activePlayers.push_back(new GamePlayer("Alice"));
+    //activePlayers.push_back(new GamePlayer("Ben"));
+    //activePlayers.push_back(new GamePlayer("Cathy"));
 
-    for (auto* player : activePlayers) {
-        player->setGameInstance(this);
-    }
+    //for (auto* player : activePlayers) {
+    //    player->setGameInstance(this);
+    //}
 }
 
 GameInstance::~GameInstance() {
     for (auto player : activePlayers) {
         delete player;
+    }
+}
+
+void GameInstance::setPlayers(const vector<string>& playerNames) {
+    // Clear any existing players
+    activePlayers.clear();
+
+    // Create players based on the input list of names
+    for (const string& name : playerNames) {
+        activePlayers.push_back(new GamePlayer(name));
+    }
+
+    // Set the game instance for each player
+    for (auto* player : activePlayers) {
+        player->setGameInstance(this);
     }
 }
 
@@ -135,8 +150,7 @@ void GameInstance::displayResults() {
 // Runs the turn of the current player, drawing a card from the deck
 void GameInstance::runTurn() {
     GamePlayer& player = *activePlayers[currentPlayerIndex];
-    cout << "\n--- " << player.getPlayerName() << "'s turn ---\n";
-    cout << player.getPlayerName() << "'s Level: " << player.getPlayerLevel() << endl;
+    displayTitleCard(player);
 
     bool turnInProgress = true;
 
@@ -205,6 +219,8 @@ void GameInstance::runTurn() {
                     player.removeCard(selectedCard->getName());
                 }
             }
+
+            displayTitleCard(player);
             continue; // Go back to action selection after playing a card
         }
         else if (selectedAction == "Skip Turn") {
@@ -245,4 +261,9 @@ int GameInstance::getValidatedNumericInput(int min, int max, const std::string& 
 
 	    return choice;
 	}
+}
+
+void GameInstance::displayTitleCard(GamePlayer& player) {
+    cout << "\n--- " << player.getPlayerName() << "'s Turn ---\n";
+    cout << player.getPlayerName() << "'s Level: " << player.getPlayerLevel() << endl;
 }

@@ -27,6 +27,8 @@ public:
     GameInstance();
     ~GameInstance();
 
+
+
     void run();
     bool checkWinCondition();
     GamePlayer& GetCurrentPlayer();
@@ -38,6 +40,10 @@ public:
 	std::shared_ptr<Card> drawTreasureCard();
 	std::shared_ptr<Card> drawDoorCard();
 
+	void setPlayers(const std::vector<std::string>& playerNames);
+	//void addPlayer(GamePlayer* player);
+	//void removePlayer(GamePlayer* player);
+
 	void discardCard(std::shared_ptr<Card> card);
 
 private:
@@ -48,4 +54,5 @@ private:
 
 	// input utility
 	int getValidatedNumericInput(int min, int max, const std::string& prompt);
+	void displayTitleCard(GamePlayer& player);
 };

@@ -15,11 +15,42 @@ using json = nlohmann::json;
 
 int main()
 {
-	/*json j = R"({"name": "John", "age": 30})"_json;
-	std::cout << j["name"] << std::endl;*/ // test json
-    // Create Active Game Instance (struct?)
+	// Ask for player names
+	vector<string> playerNames;
+	string playerName;
+	int numPlayers = 0;
+
+	cout << "Welcome to Munchkin! Please enter up to 4 player names.\n";
+
+	// Loop to get up to 4 player names
+	while (numPlayers < 4) {
+		cout << "Enter name for player " << numPlayers + 1 << " (or press enter to stop): ";
+		getline(cin, playerName);
+
+		// If player name is empty, stop asking for more players
+		if (playerName.empty()) {
+			break;
+		}
+
+		playerNames.push_back(playerName);
+		numPlayers++;
+	}
+
+	// Ensure we have at least 1 player
+	if (playerNames.empty()) {
+		cout << "You need at least one player to start the game.\n";
+		return 1;
+	}
+
+	// Create Active Game Instance and set up the players dynamically
 	GameInstance gameInstance;
+
+	// Dynamically add players based on input
+	gameInstance.setPlayers(playerNames);
+
 	// Run the game
+	cout << endl;
+
 	gameInstance.run();
 	// Cleanup
 	
