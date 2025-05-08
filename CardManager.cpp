@@ -1,6 +1,7 @@
 #include "CardManager.h"
 #include "Card.h"
 #include "EquipmentItemCard.h"
+#include "EquipmentSlot.h"
 
 #include <iostream>
 #include <algorithm>
@@ -43,9 +44,26 @@ shared_ptr<Card> CardManager::createEquipmentCard(const json& data) {
     const string type = data["type"];
 
     int powerBonus = data["effects"]["powerBonus"];
-    bool twoHanded = data["effects"].value("twoHanded", false); // TODO check what the default value is
 
-    return make_shared<EquipmentItemCard>(name, description, type, powerBonus, twoHanded);
+    // Parse handedness
+    Handedness handedness = Handedness::OneHanded;
+    string handStr = data["effects"].value("handedness", "OneHanded");
+    if (handStr == "TwoHanded") handedness = Handedness::TwoHanded;
+
+    // Parse slot
+    EquipmentSlot slot = EquipmentSlot::Body;
+    string slotStr = data["effects"].value("slot", "Body");
+    if (slotStr == "Head") slot = EquipmentSlot::Head;
+    else if (slotStr == "Body") slot = EquipmentSlot::Body;
+    else if (slotStr == "Feet") slot = EquipmentSlot::Feet;
+    else if (slotStr == "LeftHand") slot = EquipmentSlot::LeftHand;
+    else if (slotStr == "RightHand") slot = EquipmentSlot::RightHand;
+    else if (slotStr == "TwoHanded") slot = EquipmentSlot::TwoHanded;
+    else if (slotStr == "Hireling") slot = EquipmentSlot::Hireling;
+
+    return make_shared<EquipmentItemCard>(
+        name, description, type, powerBonus, handedness, slot
+    );
 }
 
 shared_ptr<Card> CardManager::createCurseCard(const json& data) {

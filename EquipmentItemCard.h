@@ -13,13 +13,16 @@ private:
     bool isEquipped;
     bool levelRequirement;
     EquipmentSlot slotType;
+	Handedness handedness;
 
 public:
     EquipmentItemCard(std::string cardName, std::string cardDescription, std::string type,
-        int powerBonus, bool twoHanded = false, EquipmentSlot slot = EquipmentSlot::OneHand,
+        int powerBonus, Handedness handedness = Handedness::OneHanded,
+        EquipmentSlot slot = EquipmentSlot::LeftHand,
         bool levelRequirement = false);
 
     EquipmentSlot getSlotType() const;
     int getPowerBonus() const;
+	Handedness getHandedness() const;
     void playCard(GamePlayer& player, GameInstance& game) override;
 };

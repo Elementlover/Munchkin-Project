@@ -110,14 +110,53 @@ std::vector<std::string> GamePlayer::getAvailableActions() const {
 void GamePlayer::equipItem(std::shared_ptr<EquipmentItemCard> equipmentCard) {
     EquipmentSlot slot = equipmentCard->getSlotType();
 
-    auto it = equippedItems.find(slot);
-    if (it != equippedItems.end()) {
-        std::cout << "Swapping out " << it->second->getName() << " from slot.\n";
-        heldCards.push_back(it->second); // Return old equipment to hand
+    Handedness handType = equipmentCard->getHandedness();
+
+    if (handType == Handedness::TwoHanded) {
+        // Unequip both hands if anything is in them
+        for (EquipmentSlot hand : {EquipmentSlot::LeftHand, EquipmentSlot::RightHand}) {
+            auto it = equippedItems.find(hand);
+            if (it != equippedItems.end()) {
+                std::cout << "Unequipping " << slotToString(hand) << ": " << it->second->getName() << "\n";
+                heldCards.push_back(it->second);
+                equippedItems.erase(it);
+            }
+        }
+
+        // Also unequip any other two-handed item
+        auto it = equippedItems.find(EquipmentSlot::TwoHanded);
+        if (it != equippedItems.end()) {
+            std::cout << "Swapping out two-handed item: " << it->second->getName() << "\n";
+            heldCards.push_back(it->second);
+        }
+
+        equippedItems[EquipmentSlot::TwoHanded] = equipmentCard;
+        std::cout << "Equipped two-handed item: " << equipmentCard->getName() << "\n";
+    }
+    else {
+        // Unequip two-handed item if present
+        auto twoHandIt = equippedItems.find(EquipmentSlot::TwoHanded);
+        if (twoHandIt != equippedItems.end()) {
+            std::cout << "Unequipping two-handed item: " << twoHandIt->second->getName() << "\n";
+            heldCards.push_back(twoHandIt->second);
+            equippedItems.erase(twoHandIt);
+        }
+
+        // Determine which hand is free
+        if (equippedItems.find(EquipmentSlot::LeftHand) == equippedItems.end()) {
+            equippedItems[EquipmentSlot::LeftHand] = equipmentCard;
+            std::cout << "Equipped in Left Hand: " << equipmentCard->getName() << "\n";
+        }
+        else if (equippedItems.find(EquipmentSlot::RightHand) == equippedItems.end()) {
+            equippedItems[EquipmentSlot::RightHand] = equipmentCard;
+            std::cout << "Equipped in Right Hand: " << equipmentCard->getName() << "\n";
+        }
+        else {
+            std::cout << "Both hands are full. Cannot equip: " << equipmentCard->getName() << "\n";
+            heldCards.push_back(equipmentCard); // Return to hand
+        }
     }
 
-    equippedItems[slot] = equipmentCard;
-	recalculatePower(); // Recalculate power after equipping
     std::cout << "Equipped: " << equipmentCard->getName() << "\n";
 }
 
@@ -138,8 +177,9 @@ std::string slotToString(EquipmentSlot slot) {
     case EquipmentSlot::Head: return "Head";
     case EquipmentSlot::Body: return "Body";
     case EquipmentSlot::Feet: return "Feet";
-    case EquipmentSlot::OneHand: return "One Hand";
-    case EquipmentSlot::TwoHands: return "Two Hands";
+    case EquipmentSlot::LeftHand: return "Left Hand";
+    case EquipmentSlot::RightHand: return "Right Hand";
+	case EquipmentSlot::TwoHanded: return "Two Handed";
     case EquipmentSlot::Hireling: return "Hireling";
     default: return "Unknown";
     }

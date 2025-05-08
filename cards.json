@@ -6,7 +6,8 @@
         "tags": [ "equipment", "weapon" ],
         "effects": {
             "powerBonus": 3,
-            "twoHanded": false
+            "handedness": "OneHanded",
+            "slot": "RightHand"
         }
     },
     {
@@ -24,7 +25,9 @@
         "type": "Treasure",
         "tags": [ "equipment", "weapon" ],
         "effects": {
-            "powerBonus": 2
+            "powerBonus": 2,
+            "handedness": "OneHanded",
+            "slot": "RightHand"
         }
     },
     {

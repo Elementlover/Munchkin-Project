@@ -1,17 +1,17 @@
 #include "EquipmentItemCard.h"
 #include "GamePlayer.h"
 #include "GameInstance.h"
+#include "EquipmentSlot.h"
 #include <iostream>
 
 EquipmentItemCard::EquipmentItemCard(std::string cardName, std::string cardDescription, std::string type,
-    int powerBonus, bool twoHanded, EquipmentSlot slot, bool levelRequirement)
+    int powerBonus, Handedness handedness, EquipmentSlot slot, bool levelRequirement)
     : ItemCard(cardName, cardDescription, type),
     bonusPower(powerBonus),
-    isTwoHanded(twoHanded),
     isEquipped(false),
+    levelRequirement(levelRequirement),
     slotType(slot),
-    levelRequirement(levelRequirement) {
-}
+    handedness(handedness) {}
 
 EquipmentSlot EquipmentItemCard::getSlotType() const {
     return slotType;
@@ -19,6 +19,10 @@ EquipmentSlot EquipmentItemCard::getSlotType() const {
 
 int EquipmentItemCard::getPowerBonus() const {
     return bonusPower;
+}
+
+Handedness EquipmentItemCard::getHandedness() const {
+    return handedness;
 }
 
 void EquipmentItemCard::playCard(GamePlayer& player, GameInstance& game) {

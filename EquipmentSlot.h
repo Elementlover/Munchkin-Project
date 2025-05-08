@@ -4,8 +4,13 @@ enum class EquipmentSlot {
     Head,
     Body,
     Feet,
-    OneHand,
-    TwoHands,
-    Hireling,
-    // Add more slots as needed
+    LeftHand,
+    RightHand,
+    TwoHanded,
+    Hireling
+};
+
+enum class Handedness {
+    OneHanded,
+    TwoHanded
 };
