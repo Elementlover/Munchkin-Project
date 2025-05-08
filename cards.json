@@ -22,6 +22,100 @@
         }
     },
     {
+        "name": "Broad Sword",
+        "description": "Wide! +3 power.",
+        "type": "Treasure",
+        "tags": [ "equipment", "weapon" ],
+        "effects": {
+            "powerBonus": 3,
+            "handedness": "TwoHanded",
+            "slot": "RightHand"
+        }
+    },
+    {
+        "name": "Singing and Dancing Sword",
+        "description": "Hear our battle song!!! Inpires +2 power.",
+        "type": "Treasure",
+        "tags": [ "equipment", "weapon" ],
+        "effects": {
+            "powerBonus": 2,
+            "handedness": "OneHanded",
+            "slot": "RightHand"
+        }
+    },
+    {
+        "name": "Buckler of Swashing",
+        "description": "Swish! Swash! +2 power.",
+        "type": "Treasure",
+        "tags": [ "equipment", "weapon" ],
+        "effects": {
+            "powerBonus": 2,
+            "handedness": "OneHanded",
+            "slot": "RightHand"
+        }
+    },
+    {
+        "name": "Shield of Ubiquity",
+        "description": "how do you even spell this thing lol. +4 power.",
+        "type": "Treasure",
+        "tags": [ "equipment", "weapon" ],
+        "effects": {
+            "powerBonus": 2,
+            "handedness": "TwoHanded",
+            "slot": "RightHand"
+        }
+    },
+    {
+        "name": "Slimey Armor",
+        "description": "Gross... but effective. +1 power.",
+        "type": "Treasure",
+        "tags": [ "equipment", "armor" ],
+        "effects": {
+            "powerBonus": 1,
+            "slot": "Body"
+        }
+    },
+    {
+        "name": "Pointy Hat of Power. Sharp enough for +3 power.",
+        "description": "Magical!",
+        "type": "Treasure",
+        "tags": [ "equipment", "armor" ],
+        "effects": {
+            "powerBonus": 3,
+            "slot": "Head"
+        }
+    },
+    {
+        "name": "Flaming Armor",
+        "description": "HOT HOT HOT +2 HOT HOT HOT",
+        "type": "Treasure",
+        "tags": [ "equipment", "armor" ],
+        "effects": {
+            "powerBonus": 2,
+            "slot": "Body"
+        }
+    },
+    {
+        "name": "Leather Armor",
+        "description": "Run of the mill armor. +1 is better than nothing.",
+        "type": "Treasure",
+        "tags": [ "equipment", "armor" ],
+        "effects": {
+            "powerBonus": 1,
+            "slot": "Body"
+        }
+    },
+    {
+        "name": "Helmet of Courage",
+        "description": "Charge boy! Make me proud... +1 power.",
+        "type": "Treasure",
+        "tags": [ "equipment", "armor" ],
+        "effects": {
+            "powerBonus": 1,
+            "slot": "Head"
+        }
+    },
+    {
         "name": "Curse: Lose a Level",
         "description": "You lose one level immediately.",
         "type": "Door",
@@ -35,6 +129,7 @@
         "description": "Elves draw extra Treasure after defeating it.",
         "type": "Door",
         "tags": [ "monster" ],
+        "level": 1,
         "WinEffect": {
             "description": "You draw 1 Treasure, and gain 1 Level",
             "TreasureDraw": 1,
@@ -51,6 +146,7 @@
         "description": "A creature from hell +3 against Clerics.",
         "type": "Door",
         "tags": [ "monster" ],
+        "level": 1,
         "WinEffect": {
             "description": "You draw 1 Treasure, and gain 1 Level",
             "TreasureDraw": 1,
@@ -67,6 +163,7 @@
         "description": "The guy can barely stand bro. +1 to Run Away.",
         "type": "Door",
         "tags": [ "monster" ],
+        "level": 1,
         "WinEffect": {
             "description": "You draw 1 Treasure, and gain 1 Level",
             "TreasureDraw": 1,
@@ -83,6 +180,7 @@
         "description": "If you can't defeat it, you may distract it (automatic escape) by dropping any wand, pole, or staff. (Fetch Fido!)",
         "type": "Door",
         "tags": [ "monster" ],
+        "level": 2,
         "WinEffect": {
             "description": "You draw 1 Treasure, and gain 1 Level",
             "TreasureDraw": 1,
@@ -99,6 +197,7 @@
         "description": "Yucky slime! +4 against Elves.",
         "type": "Door",
         "tags": [ "monster" ],
+        "level": 1,
         "WinEffect": {
             "description": "You draw 1 Treasure, and gain 1 Level",
             "TreasureDraw": 1,
@@ -115,6 +214,7 @@
         "description": "No one can help you. You must face the Gazebo alone.",
         "type": "Door",
         "tags": [ "monster" ],
+        "level": 8,
         "WinEffect": {
             "description": "You draw 2 Treasure, and gain 1 Level",
             "TreasureDraw": 2,
@@ -131,6 +231,7 @@
         "description": "They resist magic.",
         "type": "Door",
         "tags": [ "monster" ],
+        "level": 4,
         "WinEffect": {
             "description": "You draw 2 Treasure, and gain 1 Level",
             "TreasureDraw": 2,
@@ -147,6 +248,7 @@
         "description": "+6 Against Warriors",
         "type": "Door",
         "tags": [ "monster" ],
+        "level": 6,
         "WinEffect": {
             "description": "You draw 2 Treasure, and gain 1 Level",
             "TreasureDraw": 2,
@@ -163,6 +265,7 @@
         "description": "They're slimey!'",
         "type": "Door",
         "tags": [ "monster" ],
+        "level": 4,
         "WinEffect": {
             "description": "You draw 2 Treasure, and gain 1 Level",
             "TreasureDraw": 2,
@@ -179,6 +282,7 @@
         "description": "They can fly now?!??!?",
         "type": "Door",
         "tags": [ "monster" ],
+        "level": 2,
         "WinEffect": {
             "description": "You draw 1 Treasure, and gain 1 Level",
             "TreasureDraw": 2,
@@ -192,9 +296,10 @@
     },
     {
         "name": "Leperchaun",
-        "description": "+5 against elves.",
+        "description": "No... that's not a typo unfortunately.. gross...",
         "type": "Door",
         "tags": [ "monster" ],
+        "level": 4,
         "WinEffect": {
             "description": "You draw 2 Treasure, and gain 1 Level",
             "TreasureDraw": 2,

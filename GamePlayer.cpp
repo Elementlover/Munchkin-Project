@@ -181,6 +181,8 @@ void GamePlayer::equipItem(std::shared_ptr<EquipmentItemCard> equipmentCard) {
 
 
     std::cout << "Equipped: " << equipmentCard->getName() << "\n";
+	recalculatePower(); // Recalculate power after equipping
+    std::cout << playerName << "'s now has " << getPlayerPower() << " power!" << "\n";
 }
 
 void GamePlayer::listEquippedItems() const {

@@ -46,12 +46,12 @@ shared_ptr<Card> CardManager::createEquipmentCard(const json& data) {
     int powerBonus = data["effects"]["powerBonus"];
 
     // Parse handedness
-    Handedness handedness = Handedness::OneHanded;
+	Handedness handedness = Handedness::OneHanded; //default to OneHanded
     string handStr = data["effects"].value("handedness", "OneHanded");
     if (handStr == "TwoHanded") handedness = Handedness::TwoHanded;
 
     // Parse slot
-    EquipmentSlot slot = EquipmentSlot::Body;
+	EquipmentSlot slot = EquipmentSlot::Body; // default to Body
     string slotStr = data["effects"].value("slot", "Body");
     if (slotStr == "Head") slot = EquipmentSlot::Head;
     else if (slotStr == "Body") slot = EquipmentSlot::Body;
