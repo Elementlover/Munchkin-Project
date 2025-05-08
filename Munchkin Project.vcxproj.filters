@@ -22,6 +22,15 @@
     <Filter Include="Source Files\Main\Player">
       <UniqueIdentifier>{9490b434-cc71-422f-a1df-db6e5417c801}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Cards">
+      <UniqueIdentifier>{751c6893-7e10-40c4-8692-7b99be03fb4e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Main">
+      <UniqueIdentifier>{48868f4b-ec63-4a60-a68e-33753eed0004}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Main\Managers">
+      <UniqueIdentifier>{0e5e4ba3-bd9a-490d-84b9-fd86d875631a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CardManager.cpp">
@@ -56,35 +65,35 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CharacterClass.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GamePlayer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Card.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GameInstance.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="EquipmentItemCard.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CardManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="DeckManager.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Cards</Filter>
     </ClInclude>
     <ClInclude Include="CardEffects.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Cards</Filter>
+    </ClInclude>
+    <ClInclude Include="CardManager.h">
+      <Filter>Header Files\Cards</Filter>
+    </ClInclude>
+    <ClInclude Include="GameInstance.h">
+      <Filter>Header Files\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="GamePlayer.h">
+      <Filter>Header Files\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterClass.h">
+      <Filter>Header Files\Main</Filter>
     </ClInclude>
     <ClInclude Include="CombatManager.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Main\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="DeckManager.h">
+      <Filter>Header Files\Main\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="EquipmentItemCard.h">
+      <Filter>Header Files\Cards</Filter>
     </ClInclude>
     <ClInclude Include="EquipmentSlot.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Cards</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

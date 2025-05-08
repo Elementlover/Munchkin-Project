@@ -55,11 +55,14 @@ private:
 	int level;
 	unordered_map<string, int> WinEffects; // Tags for win condition
 	unordered_map<string, int> LoseEffects; // Tags for lose condition
+	std::string winDescription;
+	std::string loseDescription;
 
 public:
 	MonsterCard(string cardName, string cardDescription, string type, int level,
 		unordered_map<string, int> WinEffects,
-		unordered_map<string, int> LoseEffects);
+		unordered_map<string, int> LoseEffects,
+		std::string winDesc = "", std::string loseDesc = "");
 
 	void playCard(GamePlayer& player, GameInstance& game) override;
 
@@ -67,6 +70,8 @@ public:
 	int getLevel() const { return level; }
     unordered_map<string, int> const& getWinEffects() const { return WinEffects; }  
     unordered_map<string, int> const& getLoseEffects() const { return LoseEffects; }
+	const std::string& getWinDescription() const { return winDescription; }
+	const std::string& getLoseDescription() const { return loseDescription; }
 };
 
 class CurseCard : public Card

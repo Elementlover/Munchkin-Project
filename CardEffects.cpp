@@ -7,7 +7,7 @@
 void CardEffects::applyEffect(GamePlayer& player, const std::string& effectType, int value) {
 	if (effectType == "levelChange") {
 		player.setPlayerLevel(player.getPlayerLevel() + value);
-		std::cout << player.getPlayerName() << " gained " << value << " levels!\n"; //TODO use ternary statement to check if value is positive or negative
+		std::cout << player.getPlayerName() << (value >= 0 ? " gained " : " lost ") << std::abs(value) << " level" << (std::abs(value) == 1 ? "!\n" : "s!\n");
 	}
 	else if (effectType == "powerChange") {
 		player.setPlayerPower(player.getPlayerPower() + value);

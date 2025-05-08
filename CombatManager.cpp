@@ -7,6 +7,7 @@ void CombatManager::resolveCombat(GamePlayer& player, MonsterCard& monster, Game
 	string playerName = player.getPlayerName();
 
 	cout << playerName << " is fighting " << monster.getName() << "!\n";
+	cout << ">> " << monster.getDescription() << "\n\n"; // description of the monster
 
 	int basePlayerPower = player.getPlayerPower();
 	int baseMonsterPower = monster.getLevel();
@@ -28,13 +29,19 @@ void CombatManager::resolveCombat(GamePlayer& player, MonsterCard& monster, Game
 
 	if (totalPlayerPower >= totalMonsterPower) { // Victory
 		cout << playerName << " defeated the monster!\n";
+		if (!monster.getWinDescription().empty()) {
+			std::cout << ">> " << monster.getWinDescription() << "\n";
+		}
 		// Apply effects for winning
 
 		for (const auto& [effectName, value] : monster.getWinEffects()) {
 			CardEffects::applyEffect(player, effectName, value);
 		}
-	} else {
+	} else { // Defeat
 		cout << playerName << " was defeated by the monster!\n";
+		if (!monster.getLoseDescription().empty()) {
+			std::cout << ">> " << monster.getLoseDescription() << "\n";
+		}
 
 		const auto& loseEffects = monster.getLoseEffects();
 

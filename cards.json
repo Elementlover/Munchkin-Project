@@ -285,7 +285,7 @@
         "level": 2,
         "WinEffect": {
             "description": "You draw 1 Treasure, and gain 1 Level",
-            "TreasureDraw": 2,
+            "TreasureDraw": 1,
             "levelChange": 1
         },
         "Bad Stuff": {

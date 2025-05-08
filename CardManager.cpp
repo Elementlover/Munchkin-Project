@@ -84,10 +84,16 @@ shared_ptr<Card> CardManager::createMonsterCard(const json& data) {
 
     int level = data.value("level", 1); // defaults to level 1 if not specified
 
+    auto winJson = data.value("WinEffect", json::object());
+    auto loseJson = data.value("Bad Stuff", json::object());
+
     auto winEffects = extractEffects(data.value("WinEffect", json::object()));
     auto loseEffects = extractEffects(data.value("Bad Stuff", json::object()));
 
-    return make_shared<MonsterCard>(name, description, type, level, winEffects, loseEffects);
+    std::string winDesc = winJson.value("description", "");
+    std::string loseDesc = loseJson.value("description", "");
+
+    return make_shared<MonsterCard>(name, description, type, level, winEffects, loseEffects, winDesc, loseDesc);
 }
 
 unordered_map<string, int> CardManager::extractEffects(const json& effectData) {
