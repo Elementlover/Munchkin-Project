@@ -108,8 +108,16 @@ std::vector<std::string> GamePlayer::getAvailableActions() const {
 }
 
 void GamePlayer::equipItem(std::shared_ptr<EquipmentItemCard> equipmentCard) {
-    EquipmentSlot slot = equipmentCard->getSlotType();
 
+    // Prevent equipping the same card again
+    for (const auto& [slotKey, equippedCard] : equippedItems) {
+        if (equippedCard == equipmentCard) {
+            std::cout << "This item is already equipped.\n";
+            return;
+        }
+    }
+
+    EquipmentSlot slot = equipmentCard->getSlotType();
     Handedness handType = equipmentCard->getHandedness();
 
     if (handType == Handedness::TwoHanded) {
