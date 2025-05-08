@@ -135,7 +135,7 @@
             "TreasureDraw": 1,
             "levelChange": 1
         },
-        "LoseEffect": {
+        "Bad Stuff": {
             "description": "None. Escape is Automatic",
             "Escape Roll": 0,
             "levelChange": 0
@@ -152,7 +152,7 @@
             "TreasureDraw": 1,
             "levelChange": 1
         },
-        "LoseEffect": {
+        "Bad Stuff": {
             "description": "She whacks you. Lose a level.",
             "Escape Roll": 5,
             "levelChange": -1

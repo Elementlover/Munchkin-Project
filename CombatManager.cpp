@@ -8,16 +8,25 @@ void CombatManager::resolveCombat(GamePlayer& player, MonsterCard& monster, Game
 
 	cout << playerName << " is fighting " << monster.getName() << "!\n";
 
-	int playerPower = player.getPlayerPower();
-	int monsterPower = monster.getLevel();
+	int basePlayerPower = player.getPlayerPower();
+	int baseMonsterPower = monster.getLevel();
 
-	cout << "-> Player Power: " << playerPower << " vs Monster Power: " << monsterPower << endl;
 
-	// TODO FIX CARD EFFECTS
-	// 
-	// Could use structured bindings to unpack the effects but using older version of c++
-	// Combat resolution logic
-	if (playerPower >= monsterPower) { // Victory
+	// Roll d20 for both player and monster
+	std::random_device rd;
+	std::mt19937 gen(rd());
+	std::uniform_int_distribution<> d20(1, 20);
+
+	int playerRoll = d20(gen);
+	int monsterRoll = d20(gen);
+
+	int totalPlayerPower = basePlayerPower + playerRoll;
+	int totalMonsterPower = baseMonsterPower + monsterRoll;
+
+	std::cout << "-> Player Power: " << basePlayerPower << " + d20 (" << playerRoll << ") = " << totalPlayerPower << "\n";
+	std::cout << "-> Monster Power: " << baseMonsterPower << " + d20 (" << monsterRoll << ") = " << totalMonsterPower << "\n";
+
+	if (totalPlayerPower >= totalMonsterPower) { // Victory
 		cout << playerName << " defeated the monster!\n";
 		// Apply effects for winning
 

@@ -85,7 +85,7 @@ shared_ptr<Card> CardManager::createMonsterCard(const json& data) {
     int level = data.value("level", 1); // defaults to level 1 if not specified
 
     auto winEffects = extractEffects(data.value("WinEffect", json::object()));
-    auto loseEffects = extractEffects(data.value("LoseEffect", json::object()));
+    auto loseEffects = extractEffects(data.value("Bad Stuff", json::object()));
 
     return make_shared<MonsterCard>(name, description, type, level, winEffects, loseEffects);
 }
