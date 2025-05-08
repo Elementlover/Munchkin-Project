@@ -17,6 +17,10 @@ EquipmentSlot EquipmentItemCard::getSlotType() const {
     return slotType;
 }
 
+int EquipmentItemCard::getPowerBonus() const {
+    return bonusPower;
+}
+
 void EquipmentItemCard::playCard(GamePlayer& player, GameInstance& game) {
     int currentPower = player.getPlayerPower();
     int currentLevel = player.getPlayerLevel();

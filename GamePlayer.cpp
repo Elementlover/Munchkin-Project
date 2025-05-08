@@ -1,6 +1,10 @@
 #include "GamePlayer.h"
 #include "GameInstance.h"
 #include "Card.h" // Needed for shared_ptr<Card> use
+#include "EquipmentItemCard.h"
+
+// Forward declare slotToString
+std::string slotToString(EquipmentSlot slot);
 
 GamePlayer::GamePlayer(std::string name, int level, int power, characterClass cls)  
    : playerName(name), playerLevel(level), playerPower(power), activeClass(cls), gameInstance(nullptr) {  
@@ -87,6 +91,8 @@ void GamePlayer::listHeldCards() const
 	cout << endl;
 }
 
+// -------- Card Actions -------- //
+
 std::vector<std::string> GamePlayer::getAvailableActions() const {
     return {
         "Draw Door Card",
@@ -94,4 +100,42 @@ std::vector<std::string> GamePlayer::getAvailableActions() const {
         "Skip Turn"
 		// TODO check for other actions based on held cards
     };
+}
+
+void GamePlayer::equipItem(std::shared_ptr<EquipmentItemCard> equipmentCard) {
+    EquipmentSlot slot = equipmentCard->getSlotType();
+
+    auto it = equippedItems.find(slot);
+    if (it != equippedItems.end()) {
+        std::cout << "Swapping out " << it->second->getName() << " from slot.\n";
+        heldCards.push_back(it->second); // Return old equipment to hand
+    }
+
+    equippedItems[slot] = equipmentCard;
+    setPlayerPower(getPlayerPower() + equipmentCard->getPowerBonus()); // or call a recalc function
+    std::cout << "Equipped: " << equipmentCard->getName() << "\n";
+}
+
+void GamePlayer::listEquippedItems() const {
+    if (equippedItems.empty()) {
+        std::cout << "No equipment currently equipped.\n";
+        return;
+    }
+
+    std::cout << "Equipped Items:\n";
+    for (const auto& [slot, card] : equippedItems) {
+        std::cout << slotToString(slot) << ": " << card->getName() << " - " << card->getDescription() << "\n";
+    }
+}
+
+std::string slotToString(EquipmentSlot slot) {
+    switch (slot) {
+    case EquipmentSlot::Head: return "Head";
+    case EquipmentSlot::Body: return "Body";
+    case EquipmentSlot::Feet: return "Feet";
+    case EquipmentSlot::OneHand: return "One Hand";
+    case EquipmentSlot::TwoHands: return "Two Hands";
+    case EquipmentSlot::Hireling: return "Hireling";
+    default: return "Unknown";
+    }
 }

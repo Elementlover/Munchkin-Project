@@ -20,5 +20,6 @@ public:
         bool levelRequirement = false);
 
     EquipmentSlot getSlotType() const;
+    int getPowerBonus() const;
     void playCard(GamePlayer& player, GameInstance& game) override;
 };

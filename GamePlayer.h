@@ -5,9 +5,12 @@
 #include <vector>
 #include <memory>
 #include "Card.h" // Needed for shared_ptr<Card> use
+#include "EquipmentSlot.h"
 
+class EquipmentItemCard; // Forward declaration
 class Card; // Forward declaration
 class GameInstance; // Forward declaration
+
 
 class GamePlayer
 {
@@ -18,6 +21,8 @@ private:
     characterClass activeClass;
     std::string playerName;
     std::vector<std::shared_ptr<Card>> heldCards;
+    std::unordered_map<EquipmentSlot, std::shared_ptr<Card>> equippedItems;
+
 
 public:
     GamePlayer(std::string name = "Default Name", int level = 1, int power = 1, characterClass cls = characterClass());
@@ -48,6 +53,8 @@ public:
 
 	// Card actions
     std::vector<std::string> getAvailableActions() const;
+    void equipItem(std::shared_ptr<EquipmentItemCard> equipmentCard);
+    void listEquippedItems() const;
 };
 
 
