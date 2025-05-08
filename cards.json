@@ -11,15 +11,6 @@
         }
     },
     {
-        "name": "Curse: Lose a Level",
-        "description": "You lose one level immediately.",
-        "type": "Door",
-        "tags": [ "curse" ],
-        "effects": {
-            "levelChange": -1
-        }
-    },
-    {
         "name": "Shield of Destiny",
         "description": "A legendary shield that grants +2 power.",
         "type": "Treasure",
@@ -28,6 +19,15 @@
             "powerBonus": 2,
             "handedness": "OneHanded",
             "slot": "RightHand"
+        }
+    },
+    {
+        "name": "Curse: Lose a Level",
+        "description": "You lose one level immediately.",
+        "type": "Door",
+        "tags": [ "curse" ],
+        "effects": {
+            "levelChange": -1
         }
     },
     {
@@ -108,6 +108,102 @@
             "description": "TODO: lose footwear Lose a level.",
             "Escape Roll": 5,
             "levelChange": -1
+        }
+    },
+    {
+        "name": "Gazebo",
+        "description": "No one can help you. You must face the Gazebo alone.",
+        "type": "Door",
+        "tags": [ "monster" ],
+        "WinEffect": {
+            "description": "You draw 2 Treasure, and gain 1 Level",
+            "TreasureDraw": 2,
+            "levelChange": 1
+        },
+        "Bad Stuff": {
+            "description": "You got trapped! Lose 3 levels.",
+            "Escape Roll": 4,
+            "levelChange": -3
+        }
+    },
+    {
+        "name": "Harpies",
+        "description": "They resist magic.",
+        "type": "Door",
+        "tags": [ "monster" ],
+        "WinEffect": {
+            "description": "You draw 2 Treasure, and gain 1 Level",
+            "TreasureDraw": 2,
+            "levelChange": 1
+        },
+        "Bad Stuff": {
+            "description": "Their music is really, really bad. Lose 2 levels.",
+            "Escape Roll": 4,
+            "levelChange": -2
+        }
+    },
+    {
+        "name": "Shrieking Geek",
+        "description": "+6 Against Warriors",
+        "type": "Door",
+        "tags": [ "monster" ],
+        "WinEffect": {
+            "description": "You draw 2 Treasure, and gain 1 Level",
+            "TreasureDraw": 2,
+            "levelChange": 1
+        },
+        "Bad Stuff": {
+            "description": "Geek Squad strikes back! Lose 1 level.",
+            "Escape Roll": 4,
+            "levelChange": -1
+        }
+    },
+    {
+        "name": "Snails on Speed",
+        "description": "They're slimey!'",
+        "type": "Door",
+        "tags": [ "monster" ],
+        "WinEffect": {
+            "description": "You draw 2 Treasure, and gain 1 Level",
+            "TreasureDraw": 2,
+            "levelChange": 1
+        },
+        "Bad Stuff": {
+            "description": "No getting away this time... Lose a level.",
+            "Escape Roll": 3,
+            "levelChange": -1
+        }
+    },
+    {
+        "name": "Flying Frogs",
+        "description": "They can fly now?!??!?",
+        "type": "Door",
+        "tags": [ "monster" ],
+        "WinEffect": {
+            "description": "You draw 1 Treasure, and gain 1 Level",
+            "TreasureDraw": 2,
+            "levelChange": 1
+        },
+        "Bad Stuff": {
+            "description": "They bite you! ... (??? how ???) Lose a level.",
+            "Escape Roll": 4,
+            "levelChange": -1
+        }
+    },
+    {
+        "name": "Leperchaun",
+        "description": "+5 against elves.",
+        "type": "Door",
+        "tags": [ "monster" ],
+        "WinEffect": {
+            "description": "You draw 2 Treasure, and gain 1 Level",
+            "TreasureDraw": 2,
+            "levelChange": 1
+        },
+        "Bad Stuff": {
+            "description": "Unlucky... literally. Lose a level.",
+            "Escape Roll": 4,
+            "levelChange": -2
         }
     }
 ]
