@@ -170,7 +170,11 @@ void GameInstance::runTurn() {
 			    auto selectedCard = player.getHeldCards()[cardChoice - 1];
 			    cout << "Playing card: " << selectedCard->getName() << endl;
 			    selectedCard->playCard(player, *this);
-				player.removeCard(selectedCard->getName()); // Remove the card from hand
+                // Only remove the card from hand if it’s still there (e.g., not equipped or discarded during playCard)
+                const auto& hand = player.getHeldCards();
+                if (std::find(hand.begin(), hand.end(), selectedCard) != hand.end()) {
+                    player.removeCard(selectedCard->getName());
+                }
             }
 			continue; // Go back to action selection after playing a card
         }
