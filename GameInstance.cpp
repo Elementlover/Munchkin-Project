@@ -121,6 +121,7 @@ void GameInstance::displayResults() {
 void GameInstance::runTurn() {
     GamePlayer& player = *activePlayers[currentPlayerIndex];
     cout << "\n--- " << player.getPlayerName() << "'s turn ---\n";
+    cout << player.getPlayerName() << "'s Level: " << player.getPlayerLevel() << endl;
 
     bool turnInProgress = true;
 

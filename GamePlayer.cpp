@@ -47,7 +47,12 @@ void GamePlayer::setGameInstance(GameInstance* game) {
 }
 
 void GamePlayer::setPlayerLevel(int level) {
-    playerLevel = level;
+    if (level < 1) {
+        level = 1; // Ensure the power doesn't go below 1
+    }
+    else {
+        playerLevel = level;
+    }
 }
 
 void GamePlayer::setPlayerPower(int power) {
